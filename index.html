@@ -19,6 +19,20 @@
             --shadow: 0 8px 32px rgba(60,40,40,0.10);
         }
 
+        /* ===== DARK MODE ===== */
+        body.dark-mode {
+            --cream: #1e1e1e;
+            --blush: #2a2a2a;
+            --rose: #a06070;
+            --deep-rose: #d08090;
+            --navy: #f0f0f0;
+            --gold: #d0b060;
+            --text: #e0e0e0;
+            --muted: #888888;
+            --white: #2c2c2c;
+            --shadow: 0 8px 32px rgba(0,0,0,0.6);
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
@@ -26,6 +40,7 @@
             background: var(--cream);
             color: var(--text);
             min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
         }
 
         /* ===== HEADER ===== */
@@ -66,6 +81,20 @@
             margin-top: 10px;
             letter-spacing: 0.05em;
             border: 1px solid rgba(255,255,255,0.2);
+        }
+        .theme-toggle-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.4);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-family: 'Noto Sans JP', sans-serif;
+            cursor: pointer;
+            z-index: 10;
         }
 
         /* ===== NAV TABS ===== */
@@ -179,6 +208,7 @@
             padding: 5px 12px; border-radius: 20px; border: 1px solid var(--rose);
             background: none; font-size: 0.72rem; cursor: pointer;
             font-family: 'Noto Sans JP', sans-serif; transition: all 0.2s;
+            color: var(--text);
         }
         .phrase-tab.active { background: var(--deep-rose); color: white; border-color: var(--deep-rose); }
         .phrase-list { display: none; }
@@ -194,7 +224,7 @@
         .search-input {
             flex: 1; padding: 10px 12px; border: 1.5px solid #e8dada; border-radius: 10px;
             font-size: 0.85rem; font-family: 'Noto Sans JP', sans-serif; background: var(--cream);
-            outline: none; transition: border-color 0.2s;
+            outline: none; transition: border-color 0.2s; color: var(--text);
         }
         .search-input:focus { border-color: var(--rose); }
         .search-go {
@@ -217,7 +247,7 @@
         .currency-input {
             flex: 1; padding: 12px; border: 1.5px solid #e8dada; border-radius: 10px;
             font-size: 1.1rem; font-family: 'Noto Sans JP', sans-serif; text-align: center;
-            background: var(--cream); outline: none;
+            background: var(--cream); outline: none; color: var(--text);
         }
         .currency-label { font-size: 0.75rem; color: var(--muted); text-align: center; margin-top: 3px; }
         .rate-note { font-size: 0.7rem; color: var(--muted); text-align: center; margin-top: 8px; }
@@ -290,7 +320,7 @@
         .diary-mood-btn { padding: 6px 12px; border-radius: 20px; border: 1.5px solid #e8d0d8; background: none; font-size: 0.85rem; cursor: pointer; transition: all 0.15s; }
         .diary-mood-btn.selected { background: var(--deep-rose); border-color: var(--deep-rose); color: white; }
         .diary-date-label { font-family: 'Playfair Display', serif; font-size: 0.9rem; color: var(--deep-rose); margin-bottom: 6px; }
-        .diary-textarea { width: 100%; min-height: 120px; padding: 12px; border: 1.5px solid #e8dada; border-radius: 10px; font-family: 'Noto Sans JP', sans-serif; font-size: 0.85rem; line-height: 1.7; resize: vertical; background: var(--cream); outline: none; box-sizing: border-box; }
+        .diary-textarea { width: 100%; min-height: 120px; padding: 12px; border: 1.5px solid #e8dada; border-radius: 10px; font-family: 'Noto Sans JP', sans-serif; font-size: 0.85rem; line-height: 1.7; resize: vertical; background: var(--cream); outline: none; box-sizing: border-box; color: var(--text); }
         .diary-textarea:focus { border-color: var(--rose); }
         .diary-save-btn { width: 100%; margin-top: 10px; padding: 11px; background: linear-gradient(135deg, var(--deep-rose), #9d3060); color: white; border: none; border-radius: 10px; font-size: 0.88rem; font-family: 'Noto Sans JP', sans-serif; font-weight: 700; cursor: pointer; }
         .diary-entries { margin-top: 16px; }
@@ -310,13 +340,14 @@
         .pack-bar { background: linear-gradient(90deg, var(--rose), var(--deep-rose)); height: 100%; border-radius: 20px; transition: width 0.4s ease; }
         .pack-count { font-size: 0.75rem; color: var(--muted); text-align: right; margin-top: -10px; margin-bottom: 8px; }
 
-        footer { text-align: center; padding: 30px 20px; font-size: 0.72rem; color: var(--muted); background: white; border-top: 1px solid var(--blush); }
+        footer { text-align: center; padding: 30px 20px; font-size: 0.72rem; color: var(--muted); background: var(--white); border-top: 1px solid var(--blush); }
         footer .love { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--rose); }
     </style>
 </head>
 <body>
 
 <header>
+    <button class="theme-toggle-btn" onclick="document.body.classList.toggle('dark-mode')">画面色変更</button>
     <div class="header-inner">
         <div class="header-title">🇫🇷 Paris Guide ♡</div>
         <div class="header-sub">あなただけの旅のお守り</div>
@@ -356,23 +387,23 @@
 
     <div class="card">
         <div class="card-title">📰 フランス・旅行ニュース（日本語）</div>
-        <div id="news-content">
-            <div class="news-item" onclick="window.open('https://www.afpbb.com/subcategory/French','_blank')">
-                <div class="news-title">AFPBB News - フランス最新ニュース</div>
-                <div class="news-meta">AFP通信 日本語版</div>
-            </div>
-            <div class="news-item" onclick="window.open('https://www.anzen.mofa.go.jp/info/pcinfectionspothazardinfo_170.html','_blank')">
-                <div class="news-title">外務省 海外安全情報 - フランス</div>
-                <div class="news-meta">外務省</div>
-            </div>
-            <div class="news-item" onclick="window.open('https://www.ezairyu.mofa.go.jp/tabireg/index.html','_blank')">
-                <div class="news-title">たびレジ - 安全情報配信サービス</div>
-                <div class="news-meta">外務省</div>
-            </div>
-            <div class="news-item" onclick="window.open('https://www.fr.emb-japan.go.jp/itprtop_ja/index.html','_blank')">
-                <div class="news-title">在フランス日本国大使館 お知らせ</div>
-                <div class="news-meta">日本国大使館</div>
-            </div>
+        <div id="news-content" style="display:flex; flex-direction:column; gap:8px;">
+            <button class="qbtn qbtn-blue" onclick="window.open('https://www.afpbb.com/subcategory/French','_blank')" style="text-align:left;">
+                <div style="font-size:0.85rem; margin-bottom:2px;">AFPBB News - フランス最新ニュース</div>
+                <div style="font-size:0.65rem; font-weight:normal;">AFP通信 日本語版</div>
+            </button>
+            <button class="qbtn qbtn-rose" onclick="window.open('https://www.anzen.mofa.go.jp/info/pcinfectionspothazardinfo_170.html','_blank')" style="text-align:left;">
+                <div style="font-size:0.85rem; margin-bottom:2px;">外務省 海外安全情報 - フランス</div>
+                <div style="font-size:0.65rem; font-weight:normal;">外務省</div>
+            </button>
+            <button class="qbtn qbtn-gold" onclick="window.open('https://www.ezairyu.mofa.go.jp/tabireg/index.html','_blank')" style="text-align:left;">
+                <div style="font-size:0.85rem; margin-bottom:2px;">たびレジ - 安全情報配信サービス</div>
+                <div style="font-size:0.65rem; font-weight:normal;">外務省</div>
+            </button>
+            <button class="qbtn qbtn-green" onclick="window.open('https://www.fr.emb-japan.go.jp/itprtop_ja/index.html','_blank')" style="text-align:left;">
+                <div style="font-size:0.85rem; margin-bottom:2px;">在フランス日本国大使館 お知らせ</div>
+                <div style="font-size:0.65rem; font-weight:normal;">日本国大使館</div>
+            </button>
         </div>
     </div>
 
@@ -1301,7 +1332,7 @@ function renderDiary() {
                 <span class="diary-entry-meta">${e.mood} ${e.date}</span>
                 <button class="diary-del-btn" onclick="deleteDiaryEntry(${i})">🗑</button>
             </div>
-            <div class="diary-entry-text">${e.text.replace(/</g,'&lt;')}</div>
+            <div class="diary-entry-text">${e.text.replace(/</g,'<')}</div>
         </div>`).join('');
 }
 
@@ -1359,7 +1390,7 @@ function renderExpenses() {
     el.innerHTML = expenses.map((e, i) => `
         <div style="display:flex; align-items:center; justify-content:space-between; padding:7px 0; border-bottom:1px dashed #f0e0e0; font-size:0.82rem;">
             <span style="color:var(--muted); font-size:0.7rem; min-width:36px;">${e.time}</span>
-            <span style="flex:1; margin:0 8px;">${e.note.replace(/</g,'&lt;')}</span>
+            <span style="flex:1; margin:0 8px;">${e.note.replace(/</g,'<')}</span>
             <span style="font-weight:700; color:var(--navy);">€${e.eur.toFixed(2)}</span>
             <button onclick="deleteExpense(${i})" style="background:none;border:none;color:var(--muted);cursor:pointer;margin-left:6px;font-size:0.8rem;">✕</button>
         </div>`).join('');
