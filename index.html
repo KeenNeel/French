@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🇫🇷 Paris Guide for You ♡</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #fdf8f2;
+            --blush: #f9e4e8;
+            --rose: #e8a0b0;
+            --deep-rose: #c0637a;
+            --navy: #1a2744;
+            --gold: #c9a84c;
+            --text: #3d3330;
+            --muted: #9a8a85;
+            --white: #ffffff;
+            --shadow: 0 8px 32px rgba(60,40,40,0.10);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, var(--navy) 0%, #2d3f6e 60%, #3d2a4e 100%);
+            color: white;
+            padding: 28px 20px 22px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.15) 0%, transparent 60%),
+                        radial-gradient(ellipse at 80% 20%, rgba(232,160,176,0.12) 0%, transparent 50%);
+        }
+        .header-inner { position: relative; z-index: 1; }
+        .header-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            line-height: 1.2;
+        }
+        .header-sub {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.7);
+            margin-top: 6px;
+            letter-spacing: 0.12em;
+        }
+        .date-time {
+            background: rgba(255,255,255,0.12);
+            border-radius: 20px;
+            padding: 6px 14px;
+            display: inline-block;
+            font-size: 0.82rem;
+            margin-top: 10px;
+            letter-spacing: 0.05em;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* ===== NAV TABS ===== */
+        .nav-tabs {
+            display: flex;
+            overflow-x: auto;
+            background: var(--navy);
+            padding: 0 10px;
+            gap: 2px;
+            scrollbar-width: none;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            -webkit-overflow-scrolling: touch;
+        }
+        .nav-tabs::-webkit-scrollbar { display: none; }
+        .tab-btn {
+            flex-shrink: 0;
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.55);
+            padding: 12px 14px;
+            font-size: 0.72rem;
+            font-family: 'Noto Sans JP', sans-serif;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .tab-btn.active {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+        }
+        .tab-btn:hover { color: white; }
+
+        /* ===== SECTIONS ===== */
+        .section { display: none; padding: 16px; max-width: 520px; margin: 0 auto; }
+        .section.active { display: block; }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(200,170,170,0.15);
+            animation: fadeUp 0.35s ease both;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .card-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--deep-rose);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            border-bottom: 1px solid var(--blush);
+            padding-bottom: 8px;
+        }
+
+        /* ===== MAP ===== */
+        #map-frame {
+            width: 100%;
+            height: 220px;
+            border-radius: 12px;
+            border: none;
+            display: block;
+        }
+        .map-status {
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-top: 6px;
+            text-align: center;
+        }
+        .gps-btn {
+            width: 100%;
+            padding: 11px;
+            background: linear-gradient(135deg, var(--deep-rose), #a0446a);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: opacity 0.2s;
+        }
+        .gps-btn:active { opacity: 0.85; }
+
+        /* ===== WEATHER ===== */
+        .weather-main {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 10px 0;
+        }
+        .weather-icon { font-size: 3rem; }
+        .weather-temp { font-size: 2.4rem; font-weight: 300; color: var(--navy); }
+        .weather-desc { font-size: 0.82rem; color: var(--muted); }
+        .weather-forecast {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .forecast-day {
+            background: var(--blush);
+            border-radius: 10px;
+            padding: 8px 4px;
+            text-align: center;
+        }
+        .forecast-day .day { font-size: 0.68rem; color: var(--muted); }
+        .forecast-day .icon { font-size: 1.3rem; }
+        .forecast-day .temp { font-size: 0.78rem; font-weight: 600; color: var(--navy); }
+
+        /* ===== PHRASES ===== */
+        .phrase-tabs {
+            display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px;
+        }
+        .phrase-tab {
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--rose);
+            background: none;
+            font-size: 0.72rem;
+            cursor: pointer;
+            font-family: 'Noto Sans JP', sans-serif;
+            transition: all 0.2s;
+        }
+        .phrase-tab.active { background: var(--deep-rose); color: white; border-color: var(--deep-rose); }
+        .phrase-list { display: none; }
+        .phrase-list.active { display: block; }
+        .phrase-item {
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #f0e8e8;
+        }
+        .phrase-item:last-child { border-bottom: none; }
+        .phrase-jp { font-size: 0.82rem; color: var(--muted); font-weight: 600; }
+        .phrase-fr { font-weight: 700; color: #002395; font-size: 1rem; margin-top: 2px; }
+        .phrase-kana { font-size: 0.78rem; color: #ed2939; margin-top: 1px; }
+
+        /* ===== SEARCH ===== */
+        .search-row {
+            display: flex; gap: 8px; margin-bottom: 10px;
+        }
+        .search-input {
+            flex: 1;
+            padding: 10px 12px;
+            border: 1.5px solid #e8dada;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--cream);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .search-input:focus { border-color: var(--rose); }
+        .search-go {
+            padding: 10px 14px;
+            background: var(--deep-rose);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        .quick-btns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 4px;
+        }
+        .qbtn {
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid;
+            font-size: 0.78rem;
+            cursor: pointer;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 600;
+            transition: opacity 0.15s;
+        }
+        .qbtn:active { opacity: 0.8; }
+        .qbtn-rose  { background: #fff0f3; color: #c0637a; border-color: #f5c0cc; }
+        .qbtn-blue  { background: #eef5ff; color: #1a4fa0; border-color: #bcd0f7; }
+        .qbtn-green { background: #efffef; color: #1a7a40; border-color: #b0e8b8; }
+        .qbtn-gold  { background: #fffaee; color: #8a6400; border-color: #e8d080; }
+
+        /* ===== CURRENCY ===== */
+        .currency-row {
+            display: flex; align-items: center; gap: 10px;
+        }
+        .currency-input {
+            flex: 1;
+            padding: 12px;
+            border: 1.5px solid #e8dada;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-family: 'Noto Sans JP', sans-serif;
+            text-align: center;
+            background: var(--cream);
+            outline: none;
+        }
+        .currency-label { font-size: 0.75rem; color: var(--muted); text-align: center; margin-top: 3px; }
+        .rate-note { font-size: 0.7rem; color: var(--muted); text-align: center; margin-top: 8px; }
+        .currency-swap { font-size: 1.3rem; cursor: pointer; }
+
+        /* ===== TIPS / MANNERS ===== */
+        .tips-category {
+            margin-bottom: 14px;
+        }
+        .tips-cat-title {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--deep-rose);
+            margin-bottom: 8px;
+            display: flex; align-items: center; gap: 5px;
+        }
+        .tip-item {
+            background: var(--blush);
+            border-radius: 10px;
+            padding: 10px 12px;
+            margin-bottom: 6px;
+            font-size: 0.82rem;
+            line-height: 1.6;
+            border-left: 3px solid var(--rose);
+        }
+        .tip-item strong { color: var(--navy); }
+
+        /* ===== EMERGENCY ===== */
+        .emergency-big {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+        .e-btn {
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: none;
+            font-size: 0.88rem;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.15s;
+        }
+        .e-btn:active { transform: scale(0.98); }
+        .e-red    { background: #fee2e2; color: #b91c1c; border: 1.5px solid #fca5a5; }
+        .e-pink   { background: #fce7f3; color: #9d174d; border: 1.5px solid #f9a8d4; }
+        .e-blue   { background: #eff6ff; color: #1e40af; border: 1.5px solid #93c5fd; }
+        .e-navy   { background: #1a2744; color: white; }
+        .e-gold   { background: #fefce8; color: #854d0e; border: 1.5px solid #fde047; }
+
+        /* ===== NEWS ===== */
+        .news-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0e8e8;
+            cursor: pointer;
+        }
+        .news-item:last-child { border-bottom: none; }
+        .news-title { font-size: 0.85rem; font-weight: 600; line-height: 1.4; color: var(--navy); }
+        .news-meta  { font-size: 0.7rem; color: var(--muted); margin-top: 3px; }
+
+        /* ===== TRANSPORT ===== */
+        .transport-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .transport-card {
+            background: var(--blush);
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+        }
+        .transport-card .t-icon { font-size: 1.6rem; }
+        .transport-card .t-name { font-size: 0.75rem; font-weight: 700; color: var(--navy); margin-top: 4px; }
+        .transport-card .t-desc { font-size: 0.68rem; color: var(--muted); margin-top: 2px; }
+        .transport-link {
+            display: block;
+            text-align: center;
+            margin-top: 8px;
+            padding: 9px;
+            background: var(--navy);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed; inset: 0;
+            background: rgba(20,10,10,0.55);
+            z-index: 999;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        .modal-overlay.open { display: flex; }
+        .modal-box {
+            background: white;
+            border-radius: 20px 20px 0 0;
+            padding: 24px 20px;
+            width: 100%;
+            max-width: 520px;
+            max-height: 85vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(60px); opacity: 0; }
+            to   { transform: translateY(0); opacity: 1; }
+        }
+        .modal-close {
+            float: right;
+            background: var(--blush);
+            border: none;
+            border-radius: 50%;
+            width: 30px; height: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            line-height: 30px;
+            text-align: center;
+        }
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--deep-rose);
+            margin-bottom: 16px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.72rem;
+            color: var(--muted);
+            background: white;
+            border-top: 1px solid var(--blush);
+        }
+        footer .love { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--rose); }
+
+        /* ===== PHOTO SPOTS ===== */
+        .spot-card {
+            background: var(--white);
+            border-radius: 14px;
+            overflow: hidden;
+            margin-bottom: 14px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(200,170,170,0.15);
+        }
+        .spot-header {
+            background: linear-gradient(135deg, #2d1b4e, #1a2744);
+            color: white;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .spot-emoji { font-size: 2rem; }
+        .spot-name { font-family: 'Playfair Display', serif; font-size: 1rem; }
+        .spot-area { font-size: 0.7rem; color: rgba(255,255,255,0.65); margin-top: 2px; }
+        .spot-body { padding: 14px 16px; }
+        .spot-desc { font-size: 0.82rem; line-height: 1.65; color: var(--text); }
+        .spot-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+        .spot-tag {
+            background: var(--blush);
+            color: var(--deep-rose);
+            border-radius: 20px;
+            padding: 3px 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        .spot-actions { display: flex; gap: 8px; margin-top: 10px; }
+        .spot-btn {
+            flex: 1;
+            padding: 8px;
+            border-radius: 8px;
+            border: none;
+            font-size: 0.75rem;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+        }
+        .spot-btn-map { background: #eef5ff; color: #1a4fa0; }
+        .spot-btn-ig  { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; }
+
+        /* ===== FASHION ===== */
+        .fashion-zone {
+            margin-bottom: 16px;
+        }
+        .zone-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: var(--navy);
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid var(--blush);
+        }
+        .brand-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .brand-card {
+            background: var(--cream);
+            border-radius: 12px;
+            padding: 12px;
+            border: 1px solid #eddada;
+        }
+        .brand-name { font-size: 0.82rem; font-weight: 700; color: var(--navy); }
+        .brand-type { font-size: 0.7rem; color: var(--muted); margin-top: 2px; }
+        .brand-price { font-size: 0.7rem; color: var(--deep-rose); margin-top: 4px; font-weight: 600; }
+        .size-guide {
+            background: #fffaee;
+            border-radius: 12px;
+            padding: 14px;
+            border: 1px solid #f0dda0;
+        }
+        .size-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.78rem;
+            margin-top: 8px;
+        }
+        .size-table th {
+            background: var(--navy);
+            color: white;
+            padding: 6px 8px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .size-table td {
+            padding: 6px 8px;
+            text-align: center;
+            border-bottom: 1px solid #f0e8d8;
+        }
+        .size-table tr:nth-child(even) td { background: #fdf5e0; }
+
+        /* ===== FOOD ===== */
+        .food-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0e8e8;
+        }
+        .food-item:last-child { border-bottom: none; }
+        .food-emoji { font-size: 2.2rem; flex-shrink: 0; }
+        .food-name { font-size: 0.9rem; font-weight: 700; color: var(--navy); }
+        .food-fr   { font-size: 0.78rem; color: #002395; font-weight: 600; }
+        .food-desc { font-size: 0.78rem; color: var(--muted); margin-top: 3px; line-height: 1.5; }
+        .food-price { font-size: 0.72rem; color: var(--deep-rose); font-weight: 700; margin-top: 4px; }
+
+        /* ===== DIARY ===== */
+        .diary-toolbar {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        .diary-mood-btn {
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1.5px solid #e8d0d8;
+            background: none;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .diary-mood-btn.selected {
+            background: var(--deep-rose);
+            border-color: var(--deep-rose);
+            color: white;
+        }
+        .diary-date-label {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.9rem;
+            color: var(--deep-rose);
+            margin-bottom: 6px;
+        }
+        .diary-textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 12px;
+            border: 1.5px solid #e8dada;
+            border-radius: 10px;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            resize: vertical;
+            background: var(--cream);
+            outline: none;
+            color: var(--text);
+            box-sizing: border-box;
+        }
+        .diary-textarea:focus { border-color: var(--rose); }
+        .diary-save-btn {
+            width: 100%;
+            margin-top: 10px;
+            padding: 11px;
+            background: linear-gradient(135deg, var(--deep-rose), #9d3060);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.88rem;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .diary-entries { margin-top: 16px; }
+        .diary-entry {
+            background: var(--blush);
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--rose);
+            animation: fadeUp 0.3s ease;
+            position: relative;
+        }
+        .diary-entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+        .diary-entry-meta {
+            font-size: 0.72rem;
+            color: var(--muted);
+        }
+        .diary-entry-text {
+            font-size: 0.82rem;
+            line-height: 1.7;
+            color: var(--text);
+            white-space: pre-wrap;
+        }
+        .diary-del-btn {
+            background: none;
+            border: none;
+            color: var(--muted);
+            cursor: pointer;
+            font-size: 0.8rem;
+            padding: 2px 6px;
+        }
+        .diary-del-btn:hover { color: #dc2626; }
+        .diary-empty {
+            text-align: center;
+            color: var(--muted);
+            padding: 24px 0;
+            font-size: 0.82rem;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px dashed #f0e0e0;
+            font-size: 0.83rem;
+        }
+        .checklist-item input[type=checkbox] {
+            width: 18px; height: 18px;
+            accent-color: var(--deep-rose);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .checklist-item label { cursor: pointer; }
+        .checklist-item input:checked + label {
+            text-decoration: line-through;
+            color: var(--muted);
+        }
+
+        /* ===== PACKING ===== */
+        .pack-progress {
+            background: #f0e8e8;
+            border-radius: 20px;
+            height: 8px;
+            margin: 8px 0 12px;
+            overflow: hidden;
+        }
+        .pack-bar {
+            background: linear-gradient(90deg, var(--rose), var(--deep-rose));
+            height: 100%;
+            border-radius: 20px;
+            transition: width 0.4s ease;
+        }
+        .pack-count {
+            font-size: 0.75rem;
+            color: var(--muted);
+            text-align: right;
+            margin-top: -10px;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-inner">
+        <div class="header-title">🇫🇷 Paris Guide ♡</div>
+        <div class="header-sub">あなただけの旅のお守り</div>
+        <div class="date-time" id="dt"></div>
+    </div>
+</header>
+
+<nav class="nav-tabs">
+    <button class="tab-btn active" onclick="switchTab('home')">🏠 ホーム</button>
+    <button class="tab-btn" onclick="switchTab('map')">📍 地図</button>
+    <button class="tab-btn" onclick="switchTab('photo')">📸 映えスポット</button>
+    <button class="tab-btn" onclick="switchTab('fashion')">👗 ショッピング</button>
+    <button class="tab-btn" onclick="switchTab('food')">🍰 カフェ・グルメ</button>
+    <button class="tab-btn" onclick="switchTab('diary')">📔 旅日記</button>
+    <button class="tab-btn" onclick="switchTab('phrase')">🗣️ 会話</button>
+    <button class="tab-btn" onclick="switchTab('currency')">💶 両替</button>
+    <button class="tab-btn" onclick="switchTab('transport')">🚇 交通</button>
+    <button class="tab-btn" onclick="switchTab('tips')">📋 注意事項</button>
+    <button class="tab-btn" onclick="switchTab('emergency')">🆘 緊急</button>
+</nav>
+
+<!-- ===== HOME ===== -->
+<div class="section active" id="sec-home">
+
+    <!-- 現在地マップ -->
+    <div class="card">
+        <div class="card-title">📍 現在地マップ</div>
+        <button class="gps-btn" onclick="initMap()">📡 現在地を取得してマップ表示</button>
+        <div id="map-status" class="map-status">ボタンを押すと現在地を取得します</div>
+        <iframe id="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.7761499813!2d2.2770205!3d48.859489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C%20France!5e0!3m2!1sja!2sjp!4v1699000000000" allowfullscreen loading="lazy"></iframe>
+    </div>
+
+    <!-- 天気 -->
+    <div class="card">
+        <div class="card-title">🌤️ パリの天気</div>
+        <div id="weather-content">
+            <div style="text-align:center; color:var(--muted); padding:20px; font-size:0.85rem;">⏳ 天気情報を取得中...</div>
+        </div>
+    </div>
+
+    <!-- ニュース -->
+    <div class="card">
+        <div class="card-title">📰 フランス・旅行ニュース</div>
+        <div id="news-content"></div>
+        <a href="https://www3.nhk.or.jp/news/html/world/" target="_blank" style="display:block; text-align:center; font-size:0.78rem; color:var(--deep-rose); margin-top:8px; text-decoration:none;">▶ NHKニュースで最新情報を確認</a>
+    </div>
+
+    <!-- 今日のパリ情報 -->
+    <div class="card">
+        <div class="card-title">🗼 今日のパリ情報</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+            <a href="https://www.timeout.com/paris/things-to-do/best-things-to-do-in-paris-today" target="_blank" style="text-decoration:none;">
+                <div style="background:var(--blush); border-radius:10px; padding:12px; text-align:center;">
+                    <div style="font-size:1.4rem;">🎨</div>
+                    <div style="font-size:0.75rem; font-weight:700; color:var(--navy); margin-top:4px;">今日のイベント</div>
+                    <div style="font-size:0.65rem; color:var(--muted);">Time Out Paris</div>
+                </div>
+            </a>
+            <a href="https://www.sortiraparis.com/" target="_blank" style="text-decoration:none;">
+                <div style="background:#eef5ff; border-radius:10px; padding:12px; text-align:center;">
+                    <div style="font-size:1.4rem;">🎭</div>
+                    <div style="font-size:0.75rem; font-weight:700; color:var(--navy); margin-top:4px;">見どころ情報</div>
+                    <div style="font-size:0.65rem; color:var(--muted);">Sortir à Paris</div>
+                </div>
+            </a>
+            <a href="https://www.jnto.go.jp/news/safety/paris.html" target="_blank" style="text-decoration:none;">
+                <div style="background:#efffef; border-radius:10px; padding:12px; text-align:center;">
+                    <div style="font-size:1.4rem;">🛡️</div>
+                    <div style="font-size:0.75rem; font-weight:700; color:var(--navy); margin-top:4px;">安全情報</div>
+                    <div style="font-size:0.65rem; color:var(--muted);">外務省・JNTO</div>
+                </div>
+            </a>
+            <a href="https://www.japan.fr/ja/" target="_blank" style="text-decoration:none;">
+                <div style="background:#fffaee; border-radius:10px; padding:12px; text-align:center;">
+                    <div style="font-size:1.4rem;">🏛️</div>
+                    <div style="font-size:0.75rem; font-weight:700; color:var(--navy); margin-top:4px;">在仏日本大使館</div>
+                    <div style="font-size:0.65rem; color:var(--muted);">公式サイト</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- ===== MAP ===== -->
+<div class="section" id="sec-map">
+    <div class="card">
+        <div class="card-title">📍 現在地から周辺検索</div>
+        <button class="gps-btn" onclick="initMap()">📡 現在地を取得</button>
+        <div id="map-status2" class="map-status" style="margin-bottom:8px;"></div>
+        <iframe id="map-frame2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.7761499813!2d2.2770205!3d48.859489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C%20France!5e0!3m2!1sja!2sjp!4v1699000000000" style="width:100%; height:240px; border-radius:12px; border:none;"></iframe>
+    </div>
+    <div class="card">
+        <div class="card-title">🔍 キーワード検索</div>
+        <div class="search-row">
+            <input type="text" class="search-input" id="q" placeholder="例：boulangerie, musée, cafe...">
+            <button class="search-go" onclick="goMap()">検索</button>
+        </div>
+        <div class="quick-btns">
+            <button class="qbtn qbtn-rose"  onclick="searchNearby('boulangerie patisserie')">🥐 パン屋・ケーキ屋</button>
+            <button class="qbtn qbtn-blue"  onclick="searchNearby('restaurant')">🍽️ レストラン</button>
+            <button class="qbtn qbtn-green" onclick="searchNearby('pharmacie')">💊 薬局</button>
+            <button class="qbtn qbtn-gold"  onclick="searchNearby('supermarche epicerie')">🛒 スーパー・食料品店</button>
+            <button class="qbtn qbtn-blue"  onclick="searchNearby('musee museum')">🎨 美術館・博物館</button>
+            <button class="qbtn qbtn-rose"  onclick="searchNearby('cafe')">☕ カフェ</button>
+            <button class="qbtn qbtn-gold"  onclick="searchNearby('toilettes publiques')">🚻 公共トイレ</button>
+            <button class="qbtn qbtn-green" onclick="searchNearby('metro station paris')">🚇 メトロ駅</button>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-title">🗺️ 人気スポットへのルート</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+            <a href="https://www.google.com/maps/dir//Eiffel+Tower,+Paris,+France" target="_blank" class="qbtn qbtn-blue" style="text-decoration:none; text-align:center;">🗼 エッフェル塔</a>
+            <a href="https://www.google.com/maps/dir//Louvre+Museum,+Paris,+France" target="_blank" class="qbtn qbtn-rose" style="text-decoration:none; text-align:center;">🏛️ ルーヴル美術館</a>
+            <a href="https://www.google.com/maps/dir//Notre-Dame+Cathedral,+Paris,+France" target="_blank" class="qbtn qbtn-gold" style="text-decoration:none; text-align:center;">⛪ ノートルダム大聖堂</a>
+            <a href="https://www.google.com/maps/dir//Arc+de+Triomphe,+Paris,+France" target="_blank" class="qbtn qbtn-green" style="text-decoration:none; text-align:center;">🏛️ 凱旋門</a>
+            <a href="https://www.google.com/maps/dir//Montmartre,+Paris,+France" target="_blank" class="qbtn qbtn-rose" style="text-decoration:none; text-align:center;">🎨 モンマルトル</a>
+            <a href="https://www.google.com/maps/dir//Musee+d'Orsay,+Paris,+France" target="_blank" class="qbtn qbtn-blue" style="text-decoration:none; text-align:center;">🖼️ オルセー美術館</a>
+        </div>
+    </div>
+</div>
+
+<!-- ===== PHRASES ===== -->
+<div class="section" id="sec-phrase">
+    <div class="card">
+        <div class="card-title">🗣️ かんたんフランス語</div>
+        <div class="phrase-tabs">
+            <button class="phrase-tab active" onclick="switchPhrase('basic')">基本</button>
+            <button class="phrase-tab" onclick="switchPhrase('restaurant')">レストラン</button>
+            <button class="phrase-tab" onclick="switchPhrase('shop')">お店</button>
+            <button class="phrase-tab" onclick="switchPhrase('trouble')">困った時</button>
+            <button class="phrase-tab" onclick="switchPhrase('transport')">交通</button>
+        </div>
+        
+        <div class="phrase-list active" id="pl-basic">
+            <div class="phrase-item"><div class="phrase-jp">こんにちは / こんばんは</div><div class="phrase-fr">Bonjour / Bonsoir</div><div class="phrase-kana">ボンジュール / ボンソワール</div></div>
+            <div class="phrase-item"><div class="phrase-jp">ありがとう</div><div class="phrase-fr">Merci (beaucoup)</div><div class="phrase-kana">メルスィ (ボク―)</div></div>
+            <div class="phrase-item"><div class="phrase-jp">お願いします</div><div class="phrase-fr">S'il vous plaît</div><div class="phrase-kana">シル ヴ プレ</div></div>
+            <div class="phrase-item"><div class="phrase-jp">すみません</div><div class="phrase-fr">Excusez-moi</div><div class="phrase-kana">エクスキュゼ モワ</div></div>
+            <div class="phrase-item"><div class="phrase-jp">はい / いいえ</div><div class="phrase-fr">Oui / Non</div><div class="phrase-kana">ウィ / ノン</div></div>
+            <div class="phrase-item"><div class="phrase-jp">わかりません</div><div class="phrase-fr">Je ne comprends pas</div><div class="phrase-kana">ジュ ヌ コンプラン パ</div></div>
+            <div class="phrase-item"><div class="phrase-jp">英語は話せますか？</div><div class="phrase-fr">Parlez-vous anglais?</div><div class="phrase-kana">パルレ ヴ ザングレ？</div></div>
+            <div class="phrase-item"><div class="phrase-jp">トイレはどこですか？</div><div class="phrase-fr">Où sont les toilettes?</div><div class="phrase-kana">ウ ソン レ トワレット？</div></div>
+        </div>
+        <div class="phrase-list" id="pl-restaurant">
+            <div class="phrase-item"><div class="phrase-jp">お会計をお願いします</div><div class="phrase-fr">L'addition, s'il vous plaît</div><div class="phrase-kana">ラディスィヨン シル ヴ プレ</div></div>
+            <div class="phrase-item"><div class="phrase-jp">これをください</div><div class="phrase-fr">Je prends ça</div><div class="phrase-kana">ジュ プラン サ</div></div>
+            <div class="phrase-item"><div class="phrase-jp">おすすめは何ですか？</div><div class="phrase-fr">Qu'est-ce que vous recommandez?</div><div class="phrase-kana">ケス ク ヴ ルコマンデ？</div></div>
+            <div class="phrase-item"><div class="phrase-jp">〜アレルギーがあります</div><div class="phrase-fr">Je suis allergique à...</div><div class="phrase-kana">ジュ スィ ザレルジック ア...</div></div>
+            <div class="phrase-item"><div class="phrase-jp">おいしい！</div><div class="phrase-fr">C'est délicieux!</div><div class="phrase-kana">セ デリスィウ！</div></div>
+            <div class="phrase-item"><div class="phrase-jp">予約したいのですが</div><div class="phrase-fr">Je voudrais réserver</div><div class="phrase-kana">ジュ ヴドレ レゼルヴェ</div></div>
+            <div class="phrase-item"><div class="phrase-jp">テイクアウトできますか？</div><div class="phrase-fr">C'est possible à emporter?</div><div class="phrase-kana">セ ポシブル ア アンポルテ？</div></div>
+        </div>
+        <div class="phrase-list" id="pl-shop">
+            <div class="phrase-item"><div class="phrase-jp">いくらですか？</div><div class="phrase-fr">C'est combien?</div><div class="phrase-kana">セ コンビヤン？</div></div>
+            <div class="phrase-item"><div class="phrase-jp">試着してもいいですか？</div><div class="phrase-fr">Je peux l'essayer?</div><div class="phrase-kana">ジュ プ レセイエ？</div></div>
+            <div class="phrase-item"><div class="phrase-jp">別のサイズはありますか？</div><div class="phrase-fr">Vous avez une autre taille?</div><div class="phrase-kana">ヴ ザヴェ ユン オートル タイユ？</div></div>
+            <div class="phrase-item"><div class="phrase-jp">カードで払えますか？</div><div class="phrase-fr">Je peux payer par carte?</div><div class="phrase-kana">ジュ プ ペイエ パール カルト？</div></div>
+            <div class="phrase-item"><div class="phrase-jp">免税はできますか？</div><div class="phrase-fr">Vous faites la détaxe?</div><div class="phrase-kana">ヴ フェット ラ デタックス？</div></div>
+            <div class="phrase-item"><div class="phrase-jp">袋をいただけますか？</div><div class="phrase-fr">Un sac, s'il vous plaît</div><div class="phrase-kana">アン サック シル ヴ プレ</div></div>
+        </div>
+        <div class="phrase-list" id="pl-trouble">
+            <div class="phrase-item"><div class="phrase-jp">助けてください！</div><div class="phrase-fr">Au secours!</div><div class="phrase-kana">オ スクール！</div></div>
+            <div class="phrase-item"><div class="phrase-jp">財布を盗まれました</div><div class="phrase-fr">On m'a volé mon portefeuille</div><div class="phrase-kana">オン マ ヴォレ モン ポルトゥフィユ</div></div>
+            <div class="phrase-item"><div class="phrase-jp">迷子になりました</div><div class="phrase-fr">Je me suis perdu(e)</div><div class="phrase-kana">ジュ ム スィ ペルデュ</div></div>
+            <div class="phrase-item"><div class="phrase-jp">病院に行きたいです</div><div class="phrase-fr">Je voudrais aller à l'hôpital</div><div class="phrase-kana">ジュ ヴドレ アレ ア ロピタル</div></div>
+            <div class="phrase-item"><div class="phrase-jp">警察を呼んでください</div><div class="phrase-fr">Appelez la police, s'il vous plaît</div><div class="phrase-kana">アプレ ラ ポリス シル ヴ プレ</div></div>
+            <div class="phrase-item"><div class="phrase-jp">日本語を話せる人はいますか？</div><div class="phrase-fr">Y a-t-il quelqu'un qui parle japonais?</div><div class="phrase-kana">イ ヤティル ケルカン キ パール ジャポネ？</div></div>
+        </div>
+        <div class="phrase-list" id="pl-transport">
+            <div class="phrase-item"><div class="phrase-jp">〜に行きたいです</div><div class="phrase-fr">Je voudrais aller à...</div><div class="phrase-kana">ジュ ヴドレ アレ ア...</div></div>
+            <div class="phrase-item"><div class="phrase-jp">〜駅はどこですか？</div><div class="phrase-fr">Où est la station...?</div><div class="phrase-kana">ウ エ ラ スタスィヨン...？</div></div>
+            <div class="phrase-item"><div class="phrase-jp">空港まで一枚ください</div><div class="phrase-fr">Un billet pour l'aéroport, s'il vous plaît</div><div class="phrase-kana">アン ビエ プール ラエロポール シル ヴ プレ</div></div>
+            <div class="phrase-item"><div class="phrase-jp">次の電車は何時ですか？</div><div class="phrase-fr">À quelle heure est le prochain train?</div><div class="phrase-kana">ア ケルール エ ル プロシャン トラン？</div></div>
+            <div class="phrase-item"><div class="phrase-jp">タクシーを呼んでください</div><div class="phrase-fr">Appelez un taxi, s'il vous plaît</div><div class="phrase-kana">アプレ アン タクスィ シル ヴ プレ</div></div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== CURRENCY ===== -->
+<div class="section" id="sec-currency">
+    <div class="card">
+        <div class="card-title">💶 ユーロ ⇄ 円</div>
+        <div style="display:flex; align-items:flex-end; gap:10px;">
+            <div style="flex:1;">
+                <input type="number" class="currency-input" id="eur" placeholder="0.00" oninput="c2j()" inputmode="decimal">
+                <div class="currency-label">€ ユーロ</div>
+            </div>
+            <div class="currency-swap" onclick="swapCurrency()">⇄</div>
+            <div style="flex:1;">
+                <input type="number" class="currency-input" id="jpy" placeholder="0" oninput="c2e()" inputmode="decimal">
+                <div class="currency-label">¥ 円</div>
+            </div>
+        </div>
+        <div class="rate-note">参考レート: 1€ = <span id="rate-display">165</span>円
+            <br><a href="https://finance.yahoo.co.jp/quote/EURJPY=X" target="_blank" style="color:var(--deep-rose); font-size:0.7rem;">▶ 最新レートを確認</a>
+        </div>
+        <div style="margin-top:12px;">
+            <div style="font-size:0.78rem; font-weight:600; color:var(--muted); margin-bottom:6px;">よく使う金額</div>
+            <div style="display:grid; grid-template-columns: repeat(4,1fr); gap:6px;">
+                <button class="qbtn qbtn-rose" onclick="setEur(1)">€1</button>
+                <button class="qbtn qbtn-rose" onclick="setEur(5)">€5</button>
+                <button class="qbtn qbtn-rose" onclick="setEur(10)">€10</button>
+                <button class="qbtn qbtn-rose" onclick="setEur(20)">€20</button>
+                <button class="qbtn qbtn-blue" onclick="setEur(50)">€50</button>
+                <button class="qbtn qbtn-blue" onclick="setEur(100)">€100</button>
+                <button class="qbtn qbtn-blue" onclick="setEur(200)">€200</button>
+                <button class="qbtn qbtn-blue" onclick="setEur(500)">€500</button>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-title">💡 お金の使い方ヒント</div>
+        <div class="tip-item">💳 <strong>カード払いが主流</strong>：フランスではほとんどの場所でVisaやMastercardが使えます。現金は10〜20€程度持っておけば安心。</div>
+        <div class="tip-item">🏧 <strong>ATMはSIGNATURE入力</strong>：4桁PINが必要。銀行のATM（BNPパリバ・ソシエテジェネラル）が比較的安全。</div>
+        <div class="tip-item">☕ <strong>チップは任意</strong>：フランスはサービス料込みのため義務ではありません。気持ちとして端数を置く程度でOK。</div>
+        <div class="tip-item">🛍️ <strong>免税（デタックス）</strong>：同一店舗で100€以上買い物すると免税申請できます。パスポートを持参しましょう。</div>
+    </div>
+</div>
+
+<!-- ===== TRANSPORT ===== -->
+<div class="section" id="sec-transport">
+    <div class="card">
+        <div class="card-title">🚇 パリの交通機関</div>
+        <div class="transport-row">
+            <div class="transport-card">
+                <div class="t-icon">🚇</div>
+                <div class="t-name">メトロ（地下鉄）</div>
+                <div class="t-desc">16路線・市内移動の基本。1回券 €2.15</div>
+            </div>
+            <div class="transport-card">
+                <div class="t-icon">🚌</div>
+                <div class="t-name">バス</div>
+                <div class="t-desc">景色を楽しみながら移動。夜間バスNoctilienも◎</div>
+            </div>
+            <div class="transport-card">
+                <div class="t-icon">🚆</div>
+                <div class="t-name">RER</div>
+                <div class="t-desc">郊外・空港直通。CDG空港 ↔ 市内 約30分</div>
+            </div>
+            <div class="transport-card">
+                <div class="t-icon">🚴</div>
+                <div class="t-name">Vélib'（自転車）</div>
+                <div class="t-desc">シェアサイクル。30分以内無料（加入後）</div>
+            </div>
+        </div>
+        <a href="https://www.ratp.fr/en" target="_blank" class="transport-link">🗺️ RATP公式サイト（路線図・時刻表）</a>
+        <a href="https://www.google.com/maps?q=paris+metro+station&layer=transit" target="_blank" class="transport-link" style="margin-top:6px; background:var(--deep-rose);">📍 Google Mapで経路検索</a>
+    </div>
+    <div class="card">
+        <div class="card-title">✈️ 空港アクセス</div>
+        <div class="tip-item">🏙️ <strong>CDG（シャルル・ド・ゴール）空港</strong><br>RER B線で約35分 €11.80 / タクシー 約€55〜65</div>
+        <div class="tip-item">🏙️ <strong>ORY（オルリー）空港</strong><br>オルリーバル＋RER Bで約35分 / タクシー 約€35〜45</div>
+        <div class="tip-item">🚖 <strong>Uber/Bolt</strong>：アプリで配車可能。深夜や荷物が多い時に便利。事前に料金確認できて安心。</div>
+    </div>
+    <div class="card">
+        <div class="card-title">🎫 Navigo（定期パス）</div>
+        <div class="tip-item">📅 <strong>Navigo週間パス</strong>：月曜〜日曜で €30.75。3日以上使うなら元が取れることも。駅の窓口・券売機で購入可（写真1枚必要）。</div>
+        <a href="https://www.navigo.fr/" target="_blank" style="display:block; text-align:center; font-size:0.78rem; color:var(--deep-rose); margin-top:8px;">▶ Navigo公式サイト</a>
+    </div>
+</div>
+
+<!-- ===== TIPS ===== -->
+<div class="section" id="sec-tips">
+    <div class="card">
+        <div class="card-title">📋 フランス旅行 注意事項</div>
+        <p style="font-size:0.78rem; color:var(--muted); margin-bottom:12px;">知っておくとトラブルを防げる大切な情報です。</p>
+
+        <div class="tips-category">
+            <div class="tips-cat-title">🙏 マナー・エチケット</div>
+            <div class="tip-item">🥐 <strong>入店時は必ず挨拶</strong>：お店に入ったら必ず「Bonjour」と言いましょう。黙って入るのは失礼に当たります。これがパリジャンとのコミュニケーションの第一歩！</div>
+            <div class="tip-item">🍽️ <strong>食事中の音は控えめに</strong>：日本と違い、麺をすするなどの音はマナー違反と受け取られることがあります。また食事はゆっくりと楽しむ文化です。</div>
+            <div class="tip-item">📸 <strong>写真撮影は事前に一言</strong>：人物や個人の店内を撮影する前に「Je peux prendre une photo?（写真を撮ってもいいですか？）」と確認しましょう。</div>
+            <div class="tip-item">🚬 <strong>喫煙は指定場所のみ</strong>：屋内は全面禁煙。テラス席も禁煙の場合あり。灰皿のある場所で吸いましょう。</div>
+            <div class="tip-item">🎭 <strong>美術館・教会でのマナー</strong>：美術館では作品に触らない・大声を出さない。教会では肌の露出を控えた服装で入りましょう。</div>
+        </div>
+
+        <div class="tips-category">
+            <div class="tips-cat-title">🔐 防犯・安全</div>
+            <div class="tip-item">👜 <strong>スリ・置き引きに注意</strong>：メトロ・観光地・駅周辺はスリが多発。バッグは体の前で持ち、ファスナーは常に閉める。スマホを出したまま歩かない。</div>
+            <div class="tip-item">🧑‍🤝‍🧑 <strong>署名を求めてくる人に注意</strong>：観光地でクリップボードを持って署名を求めてくる人は詐欺グループのことが多い。きっぱり断ってOK。</div>
+            <div class="tip-item">💍 <strong>「指輪を拾った」は詐欺</strong>：「あなたが落とした指輪では？」と話しかけてくるのは詐欺。無視してください。</div>
+            <div class="tip-item">🌙 <strong>夜間の行動に注意</strong>：モンパルナス駅周辺・サン＝ドニ周辺・北駅周辺の深夜は一人で歩かないこと。タクシーやUberを活用して。</div>
+            <div class="tip-item">📱 <strong>スマホは見えない場所に</strong>：特にカフェのテーブルにスマホを置かない。ひったくりが多発しています。</div>
+        </div>
+
+        <div class="tips-category">
+            <div class="tips-cat-title">🏪 お店・食事</div>
+            <div class="tip-item">🕐 <strong>ランチは12時〜14時</strong>：フランスのレストランは昼食時間が決まっています。14時を過ぎると料理を受け付けなくなるお店も。</div>
+            <div class="tip-item">💧 <strong>水は無料で頼める</strong>：レストランでは「Une carafe d'eau, s'il vous plaît（お水をください）」と頼めば無料の水道水が出てきます。ミネラルウォーターは有料。</div>
+            <div class="tip-item">🥗 <strong>ベジタリアン対応は限定的</strong>：フランスは肉料理が中心。ベジタリアン・ビーガン向けのお店は限られるので事前に確認を。</div>
+            <div class="tip-item">🔕 <strong>月曜定休が多い</strong>：美術館や博物館は月曜休館のところが多いです。事前にチェックを忘れずに。</div>
+        </div>
+
+        <div class="tips-category">
+            <div class="tips-cat-title">💊 健康・医療</div>
+            <div class="tip-item">🌡️ <strong>薬は日本から持参が安心</strong>：胃薬・頭痛薬・絆創膏など基本的な薬は日本から持って行きましょう。フランスの薬は強い場合があります。</div>
+            <div class="tip-item">🚿 <strong>水道水は飲める</strong>：パリの水道水は飲料可能です。ただし硬水なので、敏感な方はミネラルウォーターを。</div>
+            <div class="tip-item">😷 <strong>体調不良時はまず薬局へ</strong>：軽い症状なら「Pharmacie（薬局）」（緑の十字マークが目印）で相談できます。英語対応できる薬局も多いです。</div>
+            <div class="tip-item">🏥 <strong>海外旅行保険は必ず加入</strong>：医療費はとても高額になります。クレジットカード付帯の保険内容を事前に確認しておきましょう。</div>
+        </div>
+
+        <div class="tips-category">
+            <div class="tips-cat-title">🌐 通信・Wi-Fi</div>
+            <div class="tip-item">📶 <strong>無料Wi-Fiの活用</strong>：パリ市内には無料の公共Wi-Fi「Paris Wi-Fi」があります。多くのカフェやマクドナルドでも無料接続可能。</div>
+            <div class="tip-item">📱 <strong>海外SIM/eSIM</strong>：現地SIMより日本で事前に購入したeSIMが便利でお得なことが多いです。到着後すぐ使えます。</div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== EMERGENCY ===== -->
+<div class="section" id="sec-emergency">
+    <div class="card">
+        <div class="card-title" style="color:#b91c1c;">🆘 緊急連絡先</div>
+        <div class="emergency-big">
+            <a href="tel:112" class="e-btn e-red">🚨 救急・警察・消防（共通番号）<strong>112</strong></a>
+            <a href="tel:15" class="e-btn e-red">🚑 救急専用 SAMU <strong>15</strong></a>
+            <a href="tel:17" class="e-btn e-red">👮 警察 Police <strong>17</strong></a>
+            <a href="tel:18" class="e-btn e-red">🔥 消防 Pompiers <strong>18</strong></a>
+            <a href="tel:+33145017767" class="e-btn e-navy">🏛️ 在フランス日本大使館<br><small style="font-weight:300;">+33-1-4501-7767</small></a>
+            <a href="https://www.fr.emb-japan.go.jp/itpr_ja/annuaire.html" target="_blank" class="e-btn e-pink">🏥 日本語対応病院リスト</a>
+            <a href="https://www.smbc-card.com/mem/support/index.jsp" target="_blank" class="e-btn e-gold">💳 三井住友カード紛失・盗難</a>
+            <a href="https://www.jnto.go.jp/emergency/jpn/mi_guide.html" target="_blank" class="e-btn e-blue">📞 観光庁・在外邦人安全情報</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-title">📝 パスポート・貴重品紛失の手順</div>
+        <div class="tip-item">① <strong>まず警察署（Commissariat）へ</strong>：盗難届（Déclaration de vol）を作成してもらう。保険請求に必要。</div>
+        <div class="tip-item">② <strong>日本大使館に連絡</strong>：パスポート再発行の手続きへ。写真2枚・身分証明書のコピーがあるとスムーズ。</div>
+        <div class="tip-item">③ <strong>カード会社に連絡</strong>：不正利用を防ぐためすぐに連絡。緊急カード再発行サービスを利用できる場合あり。</div>
+        <div class="tip-item">💡 <strong>事前対策</strong>：パスポートのコピーを写真でスマホに保存しておくと便利です！</div>
+    </div>
+</div>
+
+<!-- ===== PHOTO SPOTS ===== -->
+<div class="section" id="sec-photo">
+
+    <div class="card" style="background:linear-gradient(135deg,#1a2744,#2d1b4e); color:white; border:none;">
+        <div style="font-family:'Playfair Display',serif; font-size:1.3rem; margin-bottom:6px;">📸 インスタ映えスポット</div>
+        <div style="font-size:0.78rem; opacity:0.75;">パリで絶対撮りたい場所をまとめました♡</div>
+    </div>
+
+    <div class="spot-card">
+        <div class="spot-header">
+            <div class="spot-emoji">🗼</div>
+            <div><div class="spot-name">エッフェル塔</div><div class="spot-area">7区 / Champ de Mars</div></div>
+        </div>
+        <div class="spot-body">
+            <div class="spot-desc">📍 <strong>ベストショットポイント</strong>：シャン・ド・マルス公園の正面、またはトロカデロ広場から。日の入り後のライトアップは毎時5分間光り輝く✨ 夜は三脚を使うと綺麗に撮れる！</div>
+            <div class="spot-tags"><span class="spot-tag">#夜景</span><span class="spot-tag">#ライトアップ</span><span class="spot-tag">#定番</span><span class="spot-tag">#カップル</span></div>
+            <div class="spot-actions">
+                <a href="https://www.google.com/maps/dir//Trocadero,+Paris,+France" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
+                <a href="https://www.instagram.com/explore/tags/エッフェル塔/" target="_blank" class="spot-btn spot-btn-ig">📷 Instagram</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="spot-card">
+        <div class="spot-header">
+            <div class="spot-emoji">🎨</div>
+            <div><div class="spot-name">モンマルトル・サクレクール</div><div class="spot-area">18区 / Montmartre</div></div>
+        </div>
+        <div class="spot-body">
+            <div class="spot-desc">📍 階段を上った頂上から見るパリの景色は最高！早朝6時頃が人が少なくて黄金の光に包まれる。アメリ風の路地裏も必見🌹 テルトル広場では似顔絵師に描いてもらえる！</div>
+            <div class="spot-tags"><span class="spot-tag">#パノラマ</span><span class="spot-tag">#朝活</span><span class="spot-tag">#路地裏</span><span class="spot-tag">#芸術</span></div>
+            <div class="spot-actions">
+                <a href="https://www.google.com/maps/dir//Sacre+Coeur,+Montmartre,+Paris" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
+                <a href="https://www.instagram.com/explore/tags/montmartre/" target="_blank" class="spot-btn spot-btn-ig">📷 Instagram</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="spot-card">
+        <div class="spot-header">
+            <div class="spot-emoji">🌹</div>
+            <div><div class="spot-name">ルーヴル美術館・逆ピラミッド</div><div class="spot-area">1区 / Louvre</div></div>
+        </div>
+        <div class="spot-body">
+            <div class="spot-desc">📍 地下のモール「カルーゼル・デュ・ルーヴル」にある逆ピラミッドは穴場映えスポット。外のガラスピラミッドは早朝・夕方の斜光が美しい。モナリザと記念撮影も忘れずに！</div>
+            <div class="spot-tags"><span class="spot-tag">#アート</span><span class="spot-tag">#建築</span><span class="spot-tag">#穴場</span></div>
+            <div class="spot-actions">
+                <a href="https://www.google.com/maps/dir//Louvre+Museum,+Paris" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
+                <a href="https://www.instagram.com/explore/tags/louvre/" target="_blank" class="spot-btn spot-btn-ig">📷 Instagram</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="spot-card">
+        <div class="spot-header">
+            <div class="spot-emoji">🌸</div>
+            <div><div class="spot-name">パレ・ロワイヤル庭園</div><div class="spot-area">1区 / Palais Royal</div></div>
+        </div>
+        <div class="spot-body">
+            <div class="spot-desc">📍 アーケードに囲まれた隠れ家的な庭園。モノクロの縞々の柱（ビュラン・コロンナード）がおしゃれ映え抜群！観光客も少なめで、ゆっくり写真が撮れる穴場スポット。</div>
+            <div class="spot-tags"><span class="spot-tag">#穴場</span><span class="spot-tag">#アート</span><span class="spot-tag">#インスタ映え</span></div>
+            <div class="spot-actions">
+                <a href="https://www.google.com/maps/dir//Palais+Royal,+Paris" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
+                <a href="https://www.instagram.com/explore/tags/palaisroyal/" target="_blank" class="spot-btn spot-btn-ig">📷 Instagram</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="spot-card">
+        <div class="spot-header">
+            <div class="spot-emoji">🌿</div>
+            <div><div class="spot-name">サント＝シャペル</div><div class="spot-area">1区 / Île de la Cité</div></div>
+        </div>
+        <div class="spot-body">
+            <div class="spot-desc">📍 15mを超えるステンドグラスが圧巻！晴れた日は窓から差し込む光が虹色に輝いて写真映え最高。午前中の順光が美しい。チケットは事前予約でスムーズ（€14）。</div>
+            <div class="spot-tags"><span class="spot-tag">#ステンドグラス</span><span class="spot-tag">#光</span><span class="spot-tag">#映え</span><span class="spot-tag">#穴場</span></div>
+            <div class="spot-actions">
+                <a href="https://www.google.com/maps/dir//Sainte-Chapelle,+Paris" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
+                <a href="https://www.instagram.com/explore/tags/saintechapelle/" target="_blank" class="spot-btn spot-btn-ig">📷 Instagram</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">📱 写真のコツ</div>
+        <div class="tip-item">🌅 <strong>ゴールデンアワー</strong>：日の出後・日没前の1時間は光がオレンジ色で最高。エッフェル塔・サクレクールがドラマチックに。</div>
+        <div class="tip-item">🔄 <strong>縦横両方撮る</strong>：Instagram用は縦（4:5）、Stories用は縦長（9:16）を意識。</div>
+        <div class="tip-item">🪞 <strong>窓ガラス反射</strong>：ショーウィンドウや水たまりに映り込みを狙うとおしゃれに。</div>
+        <div class="tip-item">👗 <strong>服装</strong>：パリっぽいのはベレー帽、ストライプトップ、スカーフ。石畳との相性バッチリ！</div>
+    </div>
+</div>
+
+<!-- ===== FASHION ===== -->
+<div class="section" id="sec-fashion">
+
+    <div class="card" style="background:linear-gradient(135deg,#1a2744,#5c2d6e); color:white; border:none;">
+        <div style="font-family:'Playfair Display',serif; font-size:1.3rem; margin-bottom:6px;">👗 パリショッピングガイド</div>
+        <div style="font-size:0.78rem; opacity:0.75;">エリア別・予算別に厳選しました♡</div>
+    </div>
+
+    <div class="card">
+        <div class="fashion-zone">
+            <div class="zone-title">💎 憧れのラグジュアリー ／ マレ地区</div>
+            <div class="brand-grid">
+                <div class="brand-card">
+                    <div class="brand-name">Le Marais</div>
+                    <div class="brand-type">おしゃれセレクトショップ集結</div>
+                    <div class="brand-price">€〜€€€</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-name">Isabel Marant</div>
+                    <div class="brand-type">フレンチカジュアルの代名詞</div>
+                    <div class="brand-price">€€€</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-name">Sandro / Maje</div>
+                    <div class="brand-type">パリジェンヌ定番ブランド</div>
+                    <div class="brand-price">€€</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-name">A.P.C.</div>
+                    <div class="brand-type">ミニマルフレンチスタイル</div>
+                    <div class="brand-price">€€€</div>
+                </div>
+            </div>
+            <a href="https://www.google.com/maps/search/Le+Marais+fashion+Paris" target="_blank" class="transport-link" style="margin-top:10px;">📍 マレ地区をマップで見る</a>
+        </div>
+
+        <div class="fashion-zone">
+            <div class="zone-title">🛍️ お手頃・プチプラ</div>
+            <div class="brand-grid">
+                <div class="brand-card">
+                    <div class="brand-name">Zara / H&M</div>
+                    <div class="brand-type">パリ限定カラーが狙い目！</div>
+                    <div class="brand-price">€</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-name">Uniqlo Paris</div>
+                    <div class="brand-type">コラボ限定品が出ることも</div>
+                    <div class="brand-price">€</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-name">Monoprix</div>
+                    <div class="brand-type">スーパー兼衣料品。意外と使える</div>
+                    <div class="brand-price">€</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-name">蚤の市 (Marché)</div>
+                    <div class="brand-type">ヴィンテージ宝探し！</div>
+                    <div class="brand-price">€〜€€</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fashion-zone">
+            <div class="zone-title">💄 コスメ・香水</div>
+            <div class="brand-grid">
+                <div class="brand-card">
+                    <div class="brand-name">Sephora</div>
+                    <div class="brand-type">日本未発売コスメが豊富</div>
+                    <div class="brand-price">€〜€€€</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-name">L'Occitane</div>
+                    <div class="brand-type">限定セットはお土産に最適</div>
+                    <div class="brand-price">€€</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-name">Diptyque</div>
+                    <div class="brand-type">パリ発キャンドル・香水</div>
+                    <div class="brand-price">€€€</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-name">Pharmacie</div>
+                    <div class="brand-type">La Roche-Posayなど激安！</div>
+                    <div class="brand-price">€</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">📏 サイズ対照表（洋服）</div>
+        <div class="size-guide">
+            <div style="font-size:0.78rem; color:var(--muted); margin-bottom:4px;">日本サイズ → フランスサイズ</div>
+            <table class="size-table">
+                <tr><th>日本</th><th>France / EU</th><th>UK</th><th>US</th></tr>
+                <tr><td>XS / 5号</td><td>34</td><td>6</td><td>2</td></tr>
+                <tr><td>S / 7号</td><td>36</td><td>8</td><td>4</td></tr>
+                <tr><td>M / 9号</td><td>38</td><td>10</td><td>6</td></tr>
+                <tr><td>L / 11号</td><td>40</td><td>12</td><td>8</td></tr>
+                <tr><td>XL / 13号</td><td>42</td><td>14</td><td>10</td></tr>
+            </table>
+            <div style="font-size:0.7rem; color:var(--muted); margin-top:8px;">※ ブランドによってサイズ感が異なります。試着してから購入するのが安心！</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">🎁 おすすめお土産</div>
+        <div class="tip-item">🍫 <strong>チョコレート</strong>：Ladurée、Pierre Hermé、Fauchonなど。自分用にもぜひ。</div>
+        <div class="tip-item">🧴 <strong>薬局コスメ</strong>：Caudalie、Avène、Bioderma等は日本より30〜40%安い！まとめ買いOK。</div>
+        <div class="tip-item">🛍️ <strong>エコバッグ</strong>：各デパートのオリジナルバッグはコスパ◎。Le Bon Marchéが特に人気。</div>
+        <div class="tip-item">🧁 <strong>マカロン</strong>：Laduréeの缶入りが定番。箱が可愛すぎてそのままプレゼントに。</div>
+    </div>
+</div>
+
+<!-- ===== FOOD ===== -->
+<div class="section" id="sec-food">
+
+    <div class="card" style="background:linear-gradient(135deg,#3d1a0a,#7a3520); color:white; border:none;">
+        <div style="font-family:'Playfair Display',serif; font-size:1.3rem; margin-bottom:6px;">🍰 パリのカフェ・グルメ</div>
+        <div style="font-size:0.78rem; opacity:0.75;">絶対食べたいものリスト♡</div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">🥐 絶対食べたいパリグルメ</div>
+        <div class="food-item">
+            <div class="food-emoji">🥐</div>
+            <div>
+                <div class="food-name">クロワッサン</div>
+                <div class="food-fr">Croissant</div>
+                <div class="food-desc">バター香る本場の味。朝イチの焼き立てを立ち食いで。脂っこくなく、サクサクと軽い！</div>
+                <div class="food-price">€1.2〜€2</div>
+            </div>
+        </div>
+        <div class="food-item">
+            <div class="food-emoji">🧁</div>
+            <div>
+                <div class="food-name">マカロン</div>
+                <div class="food-fr">Macaron</div>
+                <div class="food-desc">Ladurée・Pierre Herméが二大巨頭。1個から買えるのでいろんな味を試して！</div>
+                <div class="food-price">€2〜€4</div>
+            </div>
+        </div>
+        <div class="food-item">
+            <div class="food-emoji">🥪</div>
+            <div>
+                <div class="food-name">クロック・ムッシュー</div>
+                <div class="food-fr">Croque Monsieur</div>
+                <div class="food-desc">ハムとチーズのホットサンド。カフェ定番メニュー。卵乗せは「マダム」に。</div>
+                <div class="food-price">€8〜€14</div>
+            </div>
+        </div>
+        <div class="food-item">
+            <div class="food-emoji">🧇</div>
+            <div>
+                <div class="food-name">クレープ</div>
+                <div class="food-fr">Crêpe</div>
+                <div class="food-desc">屋台で買える気軽なおやつ。バター+砂糖の基本が最強！Nutella入りも超人気。</div>
+                <div class="food-price">€3〜€6</div>
+            </div>
+        </div>
+        <div class="food-item">
+            <div class="food-emoji">🥗</div>
+            <div>
+                <div class="food-name">ニコワーズサラダ</div>
+                <div class="food-fr">Salade Niçoise</div>
+                <div class="food-desc">ツナ・ゆで卵・オリーブ入りのボリューム満点サラダ。ランチに最適。</div>
+                <div class="food-price">€12〜€18</div>
+            </div>
+        </div>
+        <div class="food-item">
+            <div class="food-emoji">🍷</div>
+            <div>
+                <div class="food-name">グラスワイン</div>
+                <div class="food-fr">Un verre de vin</div>
+                <div class="food-desc">カフェで食事と一緒に。ハウスワインが安くておいしい。21歳なのでフランスでは飲めます（フランスの飲酒年齢は18歳）！</div>
+                <div class="food-price">€4〜€9</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">☕ おしゃれカフェ特集</div>
+        <div class="tip-item">🌿 <strong>Café de Flore</strong>（サン＝ジェルマン）：サルトルやボーヴォワールが通った歴史的カフェ。テラス席でカフェオレを。</div>
+        <div class="tip-item">🏠 <strong>Café Kitsuné</strong>（マレ）：日仏コラボの今どきカフェ。内装がおしゃれすぎてインスタ映え抜群！</div>
+        <div class="tip-item">🌸 <strong>Angelina</strong>（リヴォリ通り）：濃厚ショコラショー（ホットチョコ）が有名。行列覚悟だけど絶対おすすめ。</div>
+        <div class="tip-item">🫧 <strong>Cafe Charlot</strong>（マレ）：モデルや映画監督が集まるパリっぽいテラスカフェ。人間観察に最高。</div>
+        <div class="tip-item">🍃 <strong>Terres de Café</strong>（各地）：スペシャルティコーヒーならここ。コーヒー好きには堪らない。</div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">🗣️ カフェで使えるフランス語</div>
+        <div class="phrase-item" style="margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed #f0e8e8;">
+            <div class="phrase-jp">カフェオレをください</div>
+            <div class="phrase-fr">Un café au lait, s'il vous plaît</div>
+            <div class="phrase-kana">アン カフェ オ レ シル ヴ プレ</div>
+        </div>
+        <div class="phrase-item" style="margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed #f0e8e8;">
+            <div class="phrase-jp">テラス席に座っていいですか？</div>
+            <div class="phrase-fr">Puis-je m'asseoir en terrasse?</div>
+            <div class="phrase-kana">プィジュ マスワール アン テラス？</div>
+        </div>
+        <div class="phrase-item" style="margin-bottom:0;padding-bottom:0;border:none;">
+            <div class="phrase-jp">おすすめのケーキは何ですか？</div>
+            <div class="phrase-fr">Quel gâteau recommandez-vous?</div>
+            <div class="phrase-kana">ケル ガトー ルコマンデ ヴ？</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">🔍 グルメサイト・予約</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+            <a href="https://www.thefork.fr/" target="_blank" class="qbtn qbtn-rose" style="text-decoration:none; text-align:center;">🍽️ TheFork<br><span style="font-size:0.65rem;">レストラン予約</span></a>
+            <a href="https://www.yelp.fr/paris" target="_blank" class="qbtn qbtn-blue" style="text-decoration:none; text-align:center;">⭐ Yelp Paris<br><span style="font-size:0.65rem;">口コミ検索</span></a>
+            <a href="https://www.google.com/maps/search/cafe+paris/@48.8566,2.3522,14z" target="_blank" class="qbtn qbtn-green" style="text-decoration:none; text-align:center;">☕ 近くのカフェ<br><span style="font-size:0.65rem;">Google Map</span></a>
+            <a href="https://www.happycow.net/europe/france/paris/" target="_blank" class="qbtn qbtn-gold" style="text-decoration:none; text-align:center;">🥗 ベジ・ビーガン<br><span style="font-size:0.65rem;">HappyCow</span></a>
+        </div>
+    </div>
+</div>
+
+<!-- ===== DIARY ===== -->
+<div class="section" id="sec-diary">
+
+    <div class="card" style="background:linear-gradient(135deg,#2d1b4e,#1a3040); color:white; border:none;">
+        <div style="font-family:'Playfair Display',serif; font-size:1.3rem; margin-bottom:6px;">📔 旅の記録</div>
+        <div style="font-size:0.78rem; opacity:0.75;">今日の思い出を残しておこう♡</div>
+    </div>
+
+    <!-- 旅日記 -->
+    <div class="card">
+        <div class="card-title">✍️ 今日の日記</div>
+        <div class="diary-date-label" id="diary-today-label"></div>
+        <div class="diary-toolbar">
+            <span style="font-size:0.78rem; color:var(--muted); align-self:center;">気分：</span>
+            <button class="diary-mood-btn" onclick="selectMood(this,'😊')">😊</button>
+            <button class="diary-mood-btn" onclick="selectMood(this,'🥰')">🥰</button>
+            <button class="diary-mood-btn" onclick="selectMood(this,'😍')">😍</button>
+            <button class="diary-mood-btn" onclick="selectMood(this,'😴')">😴</button>
+            <button class="diary-mood-btn" onclick="selectMood(this,'😋')">😋</button>
+            <button class="diary-mood-btn" onclick="selectMood(this,'🤩')">🤩</button>
+        </div>
+        <textarea class="diary-textarea" id="diary-input" placeholder="今日どこに行ったか、何を食べたか、何を感じたか...自由に書いてね♡"></textarea>
+        <button class="diary-save-btn" onclick="saveDiaryEntry()">💾 日記を保存</button>
+    </div>
+
+    <!-- 保存済み日記 -->
+    <div class="card">
+        <div class="card-title">📖 過去の日記</div>
+        <div id="diary-entries-list"><div class="diary-empty">✨ まだ日記がありません<br>最初の記録を残してみて！</div></div>
+    </div>
+
+    <!-- 旅のチェックリスト -->
+    <div class="card">
+        <div class="card-title">✅ 旅のやりたいことリスト</div>
+        <div class="pack-progress"><div class="pack-bar" id="wish-bar" style="width:0%"></div></div>
+        <div class="pack-count" id="wish-count">0 / 12 達成</div>
+        <div id="wishlist-items">
+            <div class="checklist-item"><input type="checkbox" id="w1" onchange="updateWishProgress()"><label for="w1">🗼 エッフェル塔でライトアップを見る</label></div>
+            <div class="checklist-item"><input type="checkbox" id="w2" onchange="updateWishProgress()"><label for="w2">🥐 焼き立てクロワッサンを食べる</label></div>
+            <div class="checklist-item"><input type="checkbox" id="w3" onchange="updateWishProgress()"><label for="w3">🧁 マカロンを食べる</label></div>
+            <div class="checklist-item"><input type="checkbox" id="w4" onchange="updateWishProgress()"><label for="w4">🎨 ルーヴル美術館でモナリザを見る</label></div>
+            <div class="checklist-item"><input type="checkbox" id="w5" onchange="updateWishProgress()"><label for="w5">☕ おしゃれカフェでテラス席に座る</label></div>
+            <div class="checklist-item"><input type="checkbox" id="w6" onchange="updateWishProgress()"><label for="w6">🌹 モンマルトルの路地を散歩する</label></div>
+            <div class="checklist-item"><input type="checkbox" id="w7" onchange="updateWishProgress()"><label for="w7">🛍️ パリジェンヌブランドでお買い物</label></div>
+            <div class="checklist-item"><input type="checkbox" id="w8" onchange="updateWishProgress()"><label for="w8">📸 セーヌ川で写真を撮る</label></div>
+            <div class="checklist-item"><input type="checkbox" id="w9" onchange="updateWishProgress()"><label for="w9">🧴 薬局コスメをまとめ買いする</label></div>
+            <div class="checklist-item"><input type="checkbox" id="w10" onchange="updateWishProgress()"><label for="w10">🎭 サン＝ジェルマンをおさんぽする</label></div>
+            <div class="checklist-item"><input type="checkbox" id="w11" onchange="updateWishProgress()"><label for="w11">🌸 リュクサンブール公園でのんびりする</label></div>
+            <div class="checklist-item"><input type="checkbox" id="w12" onchange="updateWishProgress()"><label for="w12">🚢 セーヌ川クルーズに乗る</label></div>
+        </div>
+    </div>
+
+    <!-- 出費メモ -->
+    <div class="card">
+        <div class="card-title">💰 今日の出費メモ</div>
+        <div style="display:flex; gap:8px; margin-bottom:8px;">
+            <input type="text" id="expense-note" class="search-input" placeholder="例：クロワッサン" style="flex:2;">
+            <input type="number" id="expense-eur" class="search-input" placeholder="€" style="flex:1; min-width:60px;" inputmode="decimal">
+            <button class="search-go" onclick="addExpense()">追加</button>
+        </div>
+        <div id="expense-list"></div>
+        <div id="expense-total" style="text-align:right; font-size:0.85rem; font-weight:700; color:var(--deep-rose); margin-top:8px; display:none;"></div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal()">×</button>
+        <div class="modal-title" id="modal-title"></div>
+        <div id="modal-body"></div>
+    </div>
+</div>
+
+<footer>
+    <div class="love">Bon Voyage ♡</div>
+    <p style="margin-top:6px;">気をつけて、最高の旅を！<br>いつでも連絡してね 📱</p>
+</footer>
+
+<script>
+// ===== DATE/TIME =====
+function updateDateTime() {
+    const now = new Date();
+    const parisTime = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Paris' }));
+    const days = ['日','月','火','水','木','金','土'];
+    const d = `${parisTime.getMonth()+1}/${parisTime.getDate()}(${days[parisTime.getDay()]})`;
+    const t = parisTime.toTimeString().slice(0,5);
+    document.getElementById('dt').textContent = `🇫🇷 パリ時間 ${d} ${t}`;
+}
+updateDateTime();
+setInterval(updateDateTime, 10000);
+
+// ===== TAB NAVIGATION =====
+function switchTab(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('sec-' + id).classList.add('active');
+    const tabs = ['home','map','photo','fashion','food','diary','phrase','currency','transport','tips','emergency'];
+    const idx = tabs.indexOf(id);
+    if (idx >= 0) document.querySelectorAll('.tab-btn')[idx].classList.add('active');
+    window.scrollTo(0, 0);
+    if (id === 'diary') renderDiary();
+}
+
+// ===== GPS & MAP =====
+let userLat = 48.8584, userLng = 2.2945; // default: Eiffel Tower
+
+function initMap() {
+    const status  = document.getElementById('map-status');
+    const status2 = document.getElementById('map-status2');
+    const setStatus = (msg) => {
+        if (status)  status.textContent  = msg;
+        if (status2) status2.textContent = msg;
+    };
+    if (!navigator.geolocation) { setStatus('❌ このブラウザはGPSに対応していません'); return; }
+    setStatus('⏳ 現在地を取得中...');
+    navigator.geolocation.getCurrentPosition(
+        (pos) => {
+            userLat = pos.coords.latitude;
+            userLng = pos.coords.longitude;
+            const src = `https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2000!2d${userLng}!3d${userLat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sja!2sfr`;
+            ['map-frame','map-frame2'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.src = src;
+            });
+            setStatus(`✅ 現在地取得成功！周辺を表示しています`);
+        },
+        (err) => {
+            let msg = '❌ 取得失敗';
+            if (err.code === 1) msg = '❌ 位置情報の許可が必要です（ブラウザの設定を確認）';
+            else if (err.code === 2) msg = '❌ 電波が弱いです。場所を変えて再試行してください';
+            else if (err.code === 3) msg = '❌ タイムアウト。再度お試しください';
+            setStatus(msg);
+        },
+        { enableHighAccuracy: true, timeout: 10000 }
+    );
+}
+
+function goMap() {
+    const q = document.getElementById('q').value.trim();
+    if (!q) { alert('検索ワードを入力してください'); return; }
+    window.open(`https://www.google.com/maps/search/${encodeURIComponent(q)}/@${userLat},${userLng},15z`);
+}
+
+function searchNearby(kw) {
+    window.open(`https://www.google.com/maps/search/${encodeURIComponent(kw)}/@${userLat},${userLng},15z`);
+}
+
+// ===== WEATHER (Open-Meteo, no API key) =====
+async function loadWeather() {
+    try {
+        const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=48.8566&longitude=2.3522&current=temperature_2m,weathercode,windspeed_10m,relative_humidity_2m&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=Europe/Paris&forecast_days=4`);
+        const d = await r.json();
+        const wmap = {
+            0:'☀️',1:'🌤️',2:'⛅',3:'☁️',
+            45:'🌫️',48:'🌫️',
+            51:'🌦️',53:'🌦️',55:'🌧️',
+            61:'🌧️',63:'🌧️',65:'🌧️',
+            71:'🌨️',73:'🌨️',75:'❄️',
+            80:'🌦️',81:'🌧️',82:'⛈️',
+            95:'⛈️',96:'⛈️',99:'⛈️'
+        };
+        const wdesc = {
+            0:'快晴',1:'晴れ',2:'一部曇り',3:'曇り',
+            45:'霧',48:'霧',
+            51:'小雨',53:'雨',55:'強い雨',
+            61:'小雨',63:'雨',65:'強い雨',
+            71:'小雪',73:'雪',75:'大雪',
+            80:'にわか雨',81:'雨',82:'激しい雨',
+            95:'雷雨',96:'雷雨',99:'激しい雷雨'
+        };
+        const cur = d.current;
+        const daily = d.daily;
+        const code = cur.weathercode;
+        const icon = wmap[code] || '🌡️';
+        const desc = wdesc[code] || '';
+        const days = ['日','月','火','水','木','金','土'];
+        let forecastHTML = '';
+        for (let i = 1; i < 4; i++) {
+            const date = new Date(daily.time[i]);
+            const dow = days[date.getDay()];
+            forecastHTML += `<div class="forecast-day">
+                <div class="day">${date.getMonth()+1}/${date.getDate()}(${dow})</div>
+                <div class="icon">${wmap[daily.weathercode[i]] || '🌡️'}</div>
+                <div class="temp">${Math.round(daily.temperature_2m_max[i])}°/<span style="color:var(--muted)">${Math.round(daily.temperature_2m_min[i])}°</span></div>
+            </div>`;
+        }
+        document.getElementById('weather-content').innerHTML = `
+            <div class="weather-main">
+                <div class="weather-icon">${icon}</div>
+                <div>
+                    <div class="weather-temp">${Math.round(cur.temperature_2m)}°C</div>
+                    <div class="weather-desc">${desc}・湿度 ${cur.relative_humidity_2m}%・風速 ${Math.round(cur.windspeed_10m)}km/h</div>
+                    <div style="font-size:0.7rem; color:var(--muted); margin-top:3px;">今日の最高 ${Math.round(daily.temperature_2m_max[0])}° / 最低 ${Math.round(daily.temperature_2m_min[0])}°</div>
+                </div>
+            </div>
+            <div style="font-size:0.78rem; font-weight:600; color:var(--muted); margin-bottom:6px;">3日間の天気</div>
+            <div class="weather-forecast">${forecastHTML}</div>`;
+    } catch(e) {
+        document.getElementById('weather-content').innerHTML = `<div style="text-align:center; color:var(--muted); padding:10px; font-size:0.82rem;">天気情報を取得できませんでした<br><a href="https://weather.yahoo.co.jp/weather/world/france/paris/" target="_blank" style="color:var(--deep-rose);">▶ Yahoo天気でパリの天気を確認</a></div>`;
+    }
+}
+loadWeather();
+
+// ===== NEWS LINKS =====
+function loadNews() {
+    const items = [
+        { title: '📰 NHK World – フランス・ヨーロッパのニュース', url: 'https://www3.nhk.or.jp/news/special/world/europe/', meta: 'NHK Web' },
+        { title: '🗺️ 外務省 海外安全情報 – フランス', url: 'https://www.anzen.mofa.go.jp/info/pcinfectionspothazardinfo_118.html', meta: '外務省' },
+        { title: '⚠️ JNTO 渡航安全情報', url: 'https://www.jnto.go.jp/emergency/', meta: 'JNTO' },
+        { title: '🌍 Le Monde（フランス主要紙・英語版）', url: 'https://www.lemonde.fr/en/', meta: 'Le Monde' },
+        { title: '🇯🇵 在仏日本大使館 お知らせ', url: 'https://www.fr.emb-japan.go.jp/itpr_ja/informatiosnimportantes.html', meta: '在フランス日本大使館' },
+    ];
+    document.getElementById('news-content').innerHTML = items.map(item =>
+        `<div class="news-item" onclick="window.open('${item.url}','_blank')">
+            <div class="news-title">${item.title}</div>
+            <div class="news-meta">${item.meta}</div>
+        </div>`
+    ).join('');
+}
+loadNews();
+
+// ===== CURRENCY =====
+let rate = 165;
+function c2j() {
+    const e = parseFloat(document.getElementById('eur').value);
+    document.getElementById('jpy').value = isNaN(e) ? '' : Math.round(e * rate);
+}
+function c2e() {
+    const j = parseFloat(document.getElementById('jpy').value);
+    document.getElementById('eur').value = isNaN(j) ? '' : (j / rate).toFixed(2);
+}
+function setEur(v) {
+    document.getElementById('eur').value = v;
+    c2j();
+}
+function swapCurrency() {
+    const e = document.getElementById('eur').value;
+    const j = document.getElementById('jpy').value;
+    document.getElementById('eur').value = j ? (parseFloat(j) / rate).toFixed(2) : '';
+    document.getElementById('jpy').value = e ? Math.round(parseFloat(e) * rate) : '';
+}
+
+// ===== PHRASE TABS =====
+function switchPhrase(id) {
+    document.querySelectorAll('.phrase-tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.phrase-list').forEach(l => l.classList.remove('active'));
+    document.getElementById('pl-' + id).classList.add('active');
+    event.target.classList.add('active');
+}
+
+// ===== DIARY =====
+let diaryEntries = JSON.parse(localStorage.getItem('paris_diary') || '[]');
+let selectedMood = '😊';
+let expenses = JSON.parse(localStorage.getItem('paris_expenses') || '[]');
+
+function initDiaryDate() {
+    const now = new Date();
+    const parisDate = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Paris' }));
+    const days = ['日','月','火','水','木','金','土'];
+    const label = `${parisDate.getFullYear()}年${parisDate.getMonth()+1}月${parisDate.getDate()}日(${days[parisDate.getDay()]})`;
+    const el = document.getElementById('diary-today-label');
+    if (el) el.textContent = label;
+}
+initDiaryDate();
+
+function selectMood(btn, mood) {
+    document.querySelectorAll('.diary-mood-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedMood = mood;
+}
+
+function saveDiaryEntry() {
+    const text = document.getElementById('diary-input').value.trim();
+    if (!text) { alert('日記の内容を入力してください'); return; }
+    const now = new Date();
+    const parisDate = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Paris' }));
+    const days = ['日','月','火','水','木','金','土'];
+    const dateStr = `${parisDate.getMonth()+1}/${parisDate.getDate()}(${days[parisDate.getDay()]}) ${parisDate.getHours().toString().padStart(2,'0')}:${parisDate.getMinutes().toString().padStart(2,'0')}`;
+    diaryEntries.unshift({ date: dateStr, mood: selectedMood, text });
+    try { localStorage.setItem('paris_diary', JSON.stringify(diaryEntries)); } catch(e){}
+    document.getElementById('diary-input').value = '';
+    renderDiary();
+    const btn = document.querySelector('.diary-save-btn');
+    btn.textContent = '✅ 保存しました！'; btn.style.background = '#16a34a';
+    setTimeout(() => { btn.textContent = '💾 日記を保存'; btn.style.background = ''; }, 2000);
+}
+
+function deleteDiaryEntry(idx) {
+    if (!confirm('この日記を削除しますか？')) return;
+    diaryEntries.splice(idx, 1);
+    try { localStorage.setItem('paris_diary', JSON.stringify(diaryEntries)); } catch(e){}
+    renderDiary();
+}
+
+function renderDiary() {
+    const el = document.getElementById('diary-entries-list');
+    if (!el) return;
+    if (diaryEntries.length === 0) {
+        el.innerHTML = '<div class="diary-empty">✨ まだ日記がありません<br>最初の記録を残してみて！</div>';
+        return;
+    }
+    el.innerHTML = diaryEntries.map((e,i) => `
+        <div class="diary-entry">
+            <div class="diary-entry-header">
+                <span class="diary-entry-meta">${e.mood} ${e.date}</span>
+                <button class="diary-del-btn" onclick="deleteDiaryEntry(${i})">🗑</button>
+            </div>
+            <div class="diary-entry-text">${e.text.replace(/</g,'&lt;')}</div>
+        </div>`).join('');
+}
+
+// ===== WISHLIST PROGRESS =====
+function updateWishProgress() {
+    const boxes = document.querySelectorAll('#wishlist-items input[type=checkbox]');
+    const checked = [...boxes].filter(b => b.checked).length;
+    const total = boxes.length;
+    const pct = Math.round(checked / total * 100);
+    const bar = document.getElementById('wish-bar');
+    const cnt = document.getElementById('wish-count');
+    if (bar) bar.style.width = pct + '%';
+    if (cnt) cnt.textContent = `${checked} / ${total} 達成 🎉`;
+}
+
+// ===== EXPENSE =====
+function addExpense() {
+    const note = document.getElementById('expense-note').value.trim();
+    const eur  = parseFloat(document.getElementById('expense-eur').value);
+    if (!note || isNaN(eur)) { alert('内容と金額を入力してください'); return; }
+    const now = new Date();
+    const parisDate = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Paris' }));
+    const timeStr = `${parisDate.getHours().toString().padStart(2,'0')}:${parisDate.getMinutes().toString().padStart(2,'0')}`;
+    expenses.push({ note, eur, time: timeStr });
+    try { localStorage.setItem('paris_expenses', JSON.stringify(expenses)); } catch(e){}
+    document.getElementById('expense-note').value = '';
+    document.getElementById('expense-eur').value = '';
+    renderExpenses();
+}
+
+function deleteExpense(idx) {
+    expenses.splice(idx, 1);
+    try { localStorage.setItem('paris_expenses', JSON.stringify(expenses)); } catch(e){}
+    renderExpenses();
+}
+
+function renderExpenses() {
+    const el = document.getElementById('expense-list');
+    const tot = document.getElementById('expense-total');
+    if (!el) return;
+    if (expenses.length === 0) { el.innerHTML = '<div style="text-align:center;color:var(--muted);padding:10px;font-size:0.8rem;">まだ記録がありません</div>'; if(tot) tot.style.display='none'; return; }
+    const total = expenses.reduce((s,e) => s + e.eur, 0);
+    el.innerHTML = expenses.map((e,i) => `
+        <div style="display:flex; align-items:center; justify-content:space-between; padding:7px 0; border-bottom:1px dashed #f0e0e0; font-size:0.82rem;">
+            <span style="color:var(--muted); font-size:0.7rem; min-width:36px;">${e.time}</span>
+            <span style="flex:1; margin:0 8px;">${e.note.replace(/</g,'&lt;')}</span>
+            <span style="font-weight:700; color:var(--navy);">€${e.eur.toFixed(2)}</span>
+            <button onclick="deleteExpense(${i})" style="background:none;border:none;color:var(--muted);cursor:pointer;margin-left:6px;font-size:0.8rem;">✕</button>
+        </div>`).join('');
+    if (tot) {
+        tot.style.display = 'block';
+        tot.innerHTML = `合計：€${total.toFixed(2)} <span style="font-size:0.72rem;color:var(--muted);">（約${Math.round(total*165)}円）</span>`;
+    }
+}
+renderExpenses();
+
+// ===== MODAL =====
+function closeModal(e) {
+    if (!e || e.target === document.getElementById('modal')) {
+        document.getElementById('modal').classList.remove('open');
+    }
+}
+</script>
+</body>
+</html>
