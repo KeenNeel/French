@@ -707,7 +707,7 @@
         <div class="card-title">📍 現在地マップ</div>
         <button class="gps-btn" onclick="initMap()">📡 現在地を取得してマップ表示</button>
         <div id="map-status" class="map-status">ボタンを押すと現在地を取得します</div>
-        <iframe id="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.7761499813!2d2.2770205!3d48.859489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C%20France!5e0!3m2!1sja!2sjp!4v1699000000000" allowfullscreen loading="lazy"></iframe>
+        <iframe id="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.7761499813!2d2.2770205!3d48.859489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C%20France!5e0!3m2!1sja!2sjp!4v1699000000000" style="width:100%;height:220px;border-radius:12px;border:none;display:block;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
     <!-- 天気 -->
@@ -743,7 +743,7 @@
                     <div style="font-size:0.65rem; color:var(--muted);">Sortir à Paris</div>
                 </div>
             </a>
-            <a href="https://www.jnto.go.jp/news/safety/paris.html" target="_blank" style="text-decoration:none;">
+            <a href="https://www.anzen.mofa.go.jp/info/pcinfectionspothazardinfo_118.html" target="_blank" style="text-decoration:none;">
                 <div style="background:#efffef; border-radius:10px; padding:12px; text-align:center;">
                     <div style="font-size:1.4rem;">🛡️</div>
                     <div style="font-size:0.75rem; font-weight:700; color:var(--navy); margin-top:4px;">安全情報</div>
@@ -767,7 +767,7 @@
         <div class="card-title">📍 現在地から周辺検索</div>
         <button class="gps-btn" onclick="initMap()">📡 現在地を取得</button>
         <div id="map-status2" class="map-status" style="margin-bottom:8px;"></div>
-        <iframe id="map-frame2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.7761499813!2d2.2770205!3d48.859489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C%20France!5e0!3m2!1sja!2sjp!4v1699000000000" style="width:100%; height:240px; border-radius:12px; border:none;"></iframe>
+        <iframe id="map-frame2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.7761499813!2d2.2770205!3d48.859489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C%20France!5e0!3m2!1sja!2sjp!4v1699000000000" style="width:100%; height:240px; border-radius:12px; border:none;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
     <div class="card">
         <div class="card-title">🔍 キーワード検索</div>
@@ -804,11 +804,11 @@
     <div class="card">
         <div class="card-title">🗣️ かんたんフランス語</div>
         <div class="phrase-tabs">
-            <button class="phrase-tab active" onclick="switchPhrase('basic')">基本</button>
-            <button class="phrase-tab" onclick="switchPhrase('restaurant')">レストラン</button>
-            <button class="phrase-tab" onclick="switchPhrase('shop')">お店</button>
-            <button class="phrase-tab" onclick="switchPhrase('trouble')">困った時</button>
-            <button class="phrase-tab" onclick="switchPhrase('transport')">交通</button>
+            <button class="phrase-tab active" onclick="switchPhrase('basic',this)">基本</button>
+            <button class="phrase-tab" onclick="switchPhrase('restaurant',this)">レストラン</button>
+            <button class="phrase-tab" onclick="switchPhrase('shop',this)">お店</button>
+            <button class="phrase-tab" onclick="switchPhrase('trouble',this)">困った時</button>
+            <button class="phrase-tab" onclick="switchPhrase('transport',this)">交通</button>
         </div>
         
         <div class="phrase-list active" id="pl-basic">
@@ -923,8 +923,8 @@
                 <div class="t-desc">シェアサイクル。30分以内無料（加入後）</div>
             </div>
         </div>
-        <a href="https://www.ratp.fr/en" target="_blank" class="transport-link">🗺️ RATP公式サイト（路線図・時刻表）</a>
-        <a href="https://www.google.com/maps?q=paris+metro+station&layer=transit" target="_blank" class="transport-link" style="margin-top:6px; background:var(--deep-rose);">📍 Google Mapで経路検索</a>
+        <a href="https://www.ratp.fr/en/visite-paris" target="_blank" class="transport-link">🗺️ RATP公式サイト（路線図・時刻表）</a>
+        <a href="https://www.google.com/maps/search/paris+metro/@48.8566,2.3522,14z" target="_blank" class="transport-link" style="margin-top:6px; background:var(--deep-rose);">📍 Google Mapで経路検索</a>
     </div>
     <div class="card">
         <div class="card-title">✈️ 空港アクセス</div>
@@ -935,7 +935,7 @@
     <div class="card">
         <div class="card-title">🎫 Navigo（定期パス）</div>
         <div class="tip-item">📅 <strong>Navigo週間パス</strong>：月曜〜日曜で €30.75。3日以上使うなら元が取れることも。駅の窓口・券売機で購入可（写真1枚必要）。</div>
-        <a href="https://www.navigo.fr/" target="_blank" style="display:block; text-align:center; font-size:0.78rem; color:var(--deep-rose); margin-top:8px;">▶ Navigo公式サイト</a>
+        <a href="https://www.navigo.fr/les-titres-de-transport/la-carte-navigo-semaine/" target="_blank" style="display:block; text-align:center; font-size:0.78rem; color:var(--deep-rose); margin-top:8px;">▶ Navigo公式サイト</a>
     </div>
 </div>
 
@@ -999,7 +999,7 @@
             <a href="tel:+33145017767" class="e-btn e-navy">🏛️ 在フランス日本大使館<br><small style="font-weight:300;">+33-1-4501-7767</small></a>
             <a href="https://www.fr.emb-japan.go.jp/itpr_ja/annuaire.html" target="_blank" class="e-btn e-pink">🏥 日本語対応病院リスト</a>
             <a href="https://www.smbc-card.com/mem/support/index.jsp" target="_blank" class="e-btn e-gold">💳 三井住友カード紛失・盗難</a>
-            <a href="https://www.jnto.go.jp/emergency/jpn/mi_guide.html" target="_blank" class="e-btn e-blue">📞 観光庁・在外邦人安全情報</a>
+            <a href="https://www.anzen.mofa.go.jp/info/pcinfectionspothazardinfo_118.html" target="_blank" class="e-btn e-blue">📞 外務省・海外安全情報</a>
         </div>
     </div>
     <div class="card">
@@ -1029,7 +1029,7 @@
             <div class="spot-tags"><span class="spot-tag">#夜景</span><span class="spot-tag">#ライトアップ</span><span class="spot-tag">#定番</span><span class="spot-tag">#カップル</span></div>
             <div class="spot-actions">
                 <a href="https://www.google.com/maps/dir//Trocadero,+Paris,+France" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
-                <a href="https://www.instagram.com/explore/tags/エッフェル塔/" target="_blank" class="spot-btn spot-btn-ig">📷 Instagram</a>
+                <a href="https://www.instagram.com/explore/tags/eiffeltower/" target="_blank" class="spot-btn spot-btn-ig">📷 Instagram</a>
             </div>
         </div>
     </div>
@@ -1351,6 +1351,10 @@
     <div class="card">
         <div class="card-title">📖 過去の日記</div>
         <div id="diary-entries-list"><div class="diary-empty">✨ まだ日記がありません<br>最初の記録を残してみて！</div></div>
+        <button onclick="backupToLine()" style="width:100%; margin-top:12px; padding:11px; background:linear-gradient(135deg,#06C755,#00a040); color:white; border:none; border-radius:10px; font-size:0.88rem; font-family:'Noto Sans JP',sans-serif; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.03 2 11c0 3.24 1.74 6.09 4.42 7.84L5.5 22l3.32-1.74C9.82 20.73 10.9 21 12 21c5.52 0 10-4.03 10-9S17.52 2 12 2z"/></svg>
+            LINEで自分に送ってバックアップ
+        </button>
     </div>
 
     <!-- 旅のチェックリスト -->
@@ -1427,14 +1431,14 @@ function switchTab(id) {
 }
 
 // ===== GPS & MAP =====
-let userLat = 48.8584, userLng = 2.2945; // default: Eiffel Tower
+let userLat = 48.8566, userLng = 2.3522; // default: Paris centre
 
 function initMap() {
-    const status  = document.getElementById('map-status');
-    const status2 = document.getElementById('map-status2');
     const setStatus = (msg) => {
-        if (status)  status.textContent  = msg;
-        if (status2) status2.textContent = msg;
+        ['map-status','map-status2'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = msg;
+        });
     };
     if (!navigator.geolocation) { setStatus('❌ このブラウザはGPSに対応していません'); return; }
     setStatus('⏳ 現在地を取得中...');
@@ -1442,32 +1446,33 @@ function initMap() {
         (pos) => {
             userLat = pos.coords.latitude;
             userLng = pos.coords.longitude;
-            const src = `https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2000!2d${userLng}!3d${userLat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sja!2sfr`;
+            // Google Maps埋め込み：search形式はAPIキー不要で動作する
+            const src = `https://maps.google.com/maps?q=${userLat},${userLng}&z=15&output=embed&hl=ja`;
             ['map-frame','map-frame2'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.src = src;
             });
-            setStatus(`✅ 現在地取得成功！周辺を表示しています`);
+            setStatus('✅ 現在地取得成功！周辺を表示しています');
         },
         (err) => {
             let msg = '❌ 取得失敗';
-            if (err.code === 1) msg = '❌ 位置情報の許可が必要です（ブラウザの設定を確認）';
+            if (err.code === 1) msg = '❌ 位置情報の許可が必要です（ブラウザ設定を確認）';
             else if (err.code === 2) msg = '❌ 電波が弱いです。場所を変えて再試行してください';
             else if (err.code === 3) msg = '❌ タイムアウト。再度お試しください';
             setStatus(msg);
         },
-        { enableHighAccuracy: true, timeout: 10000 }
+        { enableHighAccuracy: true, timeout: 12000, maximumAge: 60000 }
     );
 }
 
 function goMap() {
     const q = document.getElementById('q').value.trim();
     if (!q) { alert('検索ワードを入力してください'); return; }
-    window.open(`https://www.google.com/maps/search/${encodeURIComponent(q)}/@${userLat},${userLng},15z`);
+    window.open(`https://www.google.com/maps/search/${encodeURIComponent(q)}/@${userLat},${userLng},15z`, '_blank');
 }
 
 function searchNearby(kw) {
-    window.open(`https://www.google.com/maps/search/${encodeURIComponent(kw)}/@${userLat},${userLng},15z`);
+    window.open(`https://www.google.com/maps/search/${encodeURIComponent(kw)}/@${userLat},${userLng},15z`, '_blank');
 }
 
 // ===== WEATHER (Open-Meteo, no API key) =====
@@ -1566,11 +1571,11 @@ function swapCurrency() {
 }
 
 // ===== PHRASE TABS =====
-function switchPhrase(id) {
+function switchPhrase(id, el) {
     document.querySelectorAll('.phrase-tab').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.phrase-list').forEach(l => l.classList.remove('active'));
     document.getElementById('pl-' + id).classList.add('active');
-    event.target.classList.add('active');
+    if (el) el.classList.add('active');
 }
 
 // ===== DIARY =====
@@ -1667,13 +1672,25 @@ function deleteExpense(idx) {
     renderExpenses();
 }
 
+function backupToLine() {
+    if (diaryEntries.length === 0) { alert('日記がまだありません'); return; }
+    const text = '📔 パリ旅日記バックアップ\n' + '─'.repeat(20) + '\n\n' +
+        diaryEntries.map(e => `${e.mood} ${e.date}\n${e.text}`).join('\n\n──────\n\n');
+    const encoded = encodeURIComponent(text);
+    window.open(`https://line.me/R/msg/text/?${encoded}`, '_blank');
+}
+
 function renderExpenses() {
     const el = document.getElementById('expense-list');
     const tot = document.getElementById('expense-total');
     if (!el) return;
-    if (expenses.length === 0) { el.innerHTML = '<div style="text-align:center;color:var(--muted);padding:10px;font-size:0.8rem;">まだ記録がありません</div>'; if(tot) tot.style.display='none'; return; }
-    const total = expenses.reduce((s,e) => s + e.eur, 0);
-    el.innerHTML = expenses.map((e,i) => `
+    if (expenses.length === 0) {
+        el.innerHTML = '<div style="text-align:center;color:var(--muted);padding:10px;font-size:0.8rem;">まだ記録がありません</div>';
+        if (tot) tot.style.display = 'none';
+        return;
+    }
+    const total = expenses.reduce((s, e) => s + e.eur, 0);
+    el.innerHTML = expenses.map((e, i) => `
         <div style="display:flex; align-items:center; justify-content:space-between; padding:7px 0; border-bottom:1px dashed #f0e0e0; font-size:0.82rem;">
             <span style="color:var(--muted); font-size:0.7rem; min-width:36px;">${e.time}</span>
             <span style="flex:1; margin:0 8px;">${e.note.replace(/</g,'&lt;')}</span>
@@ -1682,7 +1699,7 @@ function renderExpenses() {
         </div>`).join('');
     if (tot) {
         tot.style.display = 'block';
-        tot.innerHTML = `合計：€${total.toFixed(2)} <span style="font-size:0.72rem;color:var(--muted);">（約${Math.round(total*165)}円）</span>`;
+        tot.innerHTML = `合計：€${total.toFixed(2)} <span style="font-size:0.72rem;color:var(--muted);">（約${Math.round(total * 165)}円）</span>`;
     }
 }
 renderExpenses();
