@@ -699,18 +699,15 @@
     <button class="tab-btn" onclick="switchTab('emergency')">🆘 緊急</button>
 </nav>
 
-<!-- ===== HOME ===== -->
 <div class="section active" id="sec-home">
 
-    <!-- 現在地マップ -->
     <div class="card">
         <div class="card-title">📍 現在地マップ</div>
         <button class="gps-btn" onclick="initMap()">📡 現在地を取得してマップ表示</button>
         <div id="map-status" class="map-status">ボタンを押すと現在地を取得します</div>
-        <iframe id="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.7761499813!2d2.2770205!3d48.859489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C%20France!5e0!3m2!1sja!2sjp!4v1699000000000" style="width:100%;height:220px;border-radius:12px;border:none;display:block;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe id="map-frame" src="https://maps.google.com/maps?q=48.8566,2.3522&z=14&output=embed&hl=ja" style="width:100%;height:220px;border-radius:12px;border:none;display:block;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
-    <!-- 天気 -->
     <div class="card">
         <div class="card-title">🌤️ パリの天気</div>
         <div id="weather-content">
@@ -718,14 +715,12 @@
         </div>
     </div>
 
-    <!-- ニュース -->
     <div class="card">
         <div class="card-title">📰 フランス・旅行ニュース</div>
         <div id="news-content"></div>
         <a href="https://www3.nhk.or.jp/news/html/world/" target="_blank" style="display:block; text-align:center; font-size:0.78rem; color:var(--deep-rose); margin-top:8px; text-decoration:none;">▶ NHKニュースで最新情報を確認</a>
     </div>
 
-    <!-- 今日のパリ情報 -->
     <div class="card">
         <div class="card-title">🗼 今日のパリ情報</div>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
@@ -761,13 +756,12 @@
     </div>
 </div>
 
-<!-- ===== MAP ===== -->
 <div class="section" id="sec-map">
     <div class="card">
         <div class="card-title">📍 現在地から周辺検索</div>
         <button class="gps-btn" onclick="initMap()">📡 現在地を取得</button>
         <div id="map-status2" class="map-status" style="margin-bottom:8px;"></div>
-        <iframe id="map-frame2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.7761499813!2d2.2770205!3d48.859489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C%20France!5e0!3m2!1sja!2sjp!4v1699000000000" style="width:100%; height:240px; border-radius:12px; border:none;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe id="map-frame2" src="https://maps.google.com/maps?q=48.8566,2.3522&z=14&output=embed&hl=ja" style="width:100%; height:240px; border-radius:12px; border:none;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
     <div class="card">
         <div class="card-title">🔍 キーワード検索</div>
@@ -789,17 +783,16 @@
     <div class="card">
         <div class="card-title">🗺️ 人気スポットへのルート</div>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-            <a href="https://www.google.com/maps/dir//Eiffel+Tower,+Paris,+France" target="_blank" class="qbtn qbtn-blue" style="text-decoration:none; text-align:center;">🗼 エッフェル塔</a>
-            <a href="https://www.google.com/maps/dir//Louvre+Museum,+Paris,+France" target="_blank" class="qbtn qbtn-rose" style="text-decoration:none; text-align:center;">🏛️ ルーヴル美術館</a>
-            <a href="https://www.google.com/maps/dir//Notre-Dame+Cathedral,+Paris,+France" target="_blank" class="qbtn qbtn-gold" style="text-decoration:none; text-align:center;">⛪ ノートルダム大聖堂</a>
-            <a href="https://www.google.com/maps/dir//Arc+de+Triomphe,+Paris,+France" target="_blank" class="qbtn qbtn-green" style="text-decoration:none; text-align:center;">🏛️ 凱旋門</a>
-            <a href="https://www.google.com/maps/dir//Montmartre,+Paris,+France" target="_blank" class="qbtn qbtn-rose" style="text-decoration:none; text-align:center;">🎨 モンマルトル</a>
-            <a href="https://www.google.com/maps/dir//Mus%C3%A9e+d%27Orsay,+Paris,+France" target="_blank" class="qbtn qbtn-blue" style="text-decoration:none; text-align:center;">🖼️ オルセー美術館</a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Tour+Eiffel,Paris" target="_blank" class="qbtn qbtn-blue" style="text-decoration:none; text-align:center;">🗼 エッフェル塔</a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Louvre+Museum,Paris" target="_blank" class="qbtn qbtn-rose" style="text-decoration:none; text-align:center;">🏛️ ルーヴル美術館</a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Cathédrale+Notre-Dame+de+Paris" target="_blank" class="qbtn qbtn-gold" style="text-decoration:none; text-align:center;">⛪ ノートルダム大聖堂</a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Arc+de+Triomphe,Paris" target="_blank" class="qbtn qbtn-green" style="text-decoration:none; text-align:center;">🏛️ 凱旋門</a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Montmartre,Paris" target="_blank" class="qbtn qbtn-rose" style="text-decoration:none; text-align:center;">🎨 モンマルトル</a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Musée+d'Orsay,Paris" target="_blank" class="qbtn qbtn-blue" style="text-decoration:none; text-align:center;">🖼️ オルセー美術館</a>
         </div>
     </div>
 </div>
 
-<!-- ===== PHRASES ===== -->
 <div class="section" id="sec-phrase">
     <div class="card">
         <div class="card-title">🗣️ かんたんフランス語</div>
@@ -856,7 +849,6 @@
     </div>
 </div>
 
-<!-- ===== CURRENCY ===== -->
 <div class="section" id="sec-currency">
     <div class="card">
         <div class="card-title">💶 ユーロ ⇄ 円</div>
@@ -872,7 +864,7 @@
             </div>
         </div>
         <div class="rate-note">参考レート: 1€ = <span id="rate-display">165</span>円
-            <br><a href="https://finance.yahoo.co.jp/quote/EURJPY%3DX" target="_blank" style="color:var(--deep-rose); font-size:0.7rem;">▶ 最新レートを確認</a>
+            <br><a href="https://finance.yahoo.co.jp/quote/EURJPY=X" target="_blank" style="color:var(--deep-rose); font-size:0.7rem;">▶ 最新レートを確認</a>
         </div>
         <div style="margin-top:12px;">
             <div style="font-size:0.78rem; font-weight:600; color:var(--muted); margin-bottom:6px;">よく使う金額</div>
@@ -897,7 +889,6 @@
     </div>
 </div>
 
-<!-- ===== TRANSPORT ===== -->
 <div class="section" id="sec-transport">
     <div class="card">
         <div class="card-title">🚇 パリの交通機関</div>
@@ -924,7 +915,7 @@
             </div>
         </div>
         <a href="https://www.ratp.fr/en" target="_blank" class="transport-link">🗺️ RATP公式サイト（路線図・時刻表）</a>
-        <a href="https://www.google.com/maps/search/metro+paris/@48.8566,2.3522,14z" target="_blank" class="transport-link" style="margin-top:6px; background:var(--deep-rose);">📍 Google Mapで経路検索</a>
+        <a href="https://www.google.com/maps/dir/?api=1" target="_blank" class="transport-link" style="margin-top:6px; background:var(--deep-rose);">📍 Google Mapで経路検索</a>
     </div>
     <div class="card">
         <div class="card-title">✈️ 空港アクセス</div>
@@ -935,11 +926,10 @@
     <div class="card">
         <div class="card-title">🎫 Navigo（定期パス）</div>
         <div class="tip-item">📅 <strong>Navigo週間パス</strong>：月曜〜日曜で €30.75。3日以上使うなら元が取れることも。駅の窓口・券売機で購入可（写真1枚必要）。</div>
-        <a href="https://www.navigo.fr" target="_blank" style="display:block; text-align:center; font-size:0.78rem; color:var(--deep-rose); margin-top:8px;">▶ Navigo公式サイト</a>
+        <a href="https://www.iledefrance-mobilites.fr/en" target="_blank" style="display:block; text-align:center; font-size:0.78rem; color:var(--deep-rose); margin-top:8px;">▶ Île-de-France Mobilités (Navigo公式)</a>
     </div>
 </div>
 
-<!-- ===== TIPS ===== -->
 <div class="section" id="sec-tips">
     <div class="card">
         <div class="card-title">📋 フランス旅行 注意事項</div>
@@ -987,7 +977,6 @@
     </div>
 </div>
 
-<!-- ===== EMERGENCY ===== -->
 <div class="section" id="sec-emergency">
     <div class="card">
         <div class="card-title" style="color:#b91c1c;">🆘 緊急連絡先</div>
@@ -997,8 +986,8 @@
             <a href="tel:17" class="e-btn e-red">👮 警察 Police <strong>17</strong></a>
             <a href="tel:18" class="e-btn e-red">🔥 消防 Pompiers <strong>18</strong></a>
             <a href="tel:+33145017767" class="e-btn e-navy">🏛️ 在フランス日本大使館<br><small style="font-weight:300;">+33-1-4501-7767</small></a>
-            <a href="https://www.fr.emb-japan.go.jp/itpr_ja/annuaire.html" target="_blank" class="e-btn e-pink">🏥 日本語対応病院リスト</a>
-            <a href="https://www.smbc-card.com/mem/support/index.jsp" target="_blank" class="e-btn e-gold">💳 三井住友カード紛失・盗難</a>
+            <a href="https://www.fr.emb-japan.go.jp/itpr_ja/taizaisha-iryou.html" target="_blank" class="e-btn e-pink">🏥 日本語対応病院リスト</a>
+            <a href="https://www.smbc-card.com/mem/support/lost.jsp" target="_blank" class="e-btn e-gold">💳 三井住友カード紛失・盗難</a>
             <a href="https://www.anzen.mofa.go.jp/info/pcinfectionspothazardinfo_118.html" target="_blank" class="e-btn e-blue">📞 外務省・海外安全情報</a>
         </div>
     </div>
@@ -1011,7 +1000,6 @@
     </div>
 </div>
 
-<!-- ===== PHOTO SPOTS ===== -->
 <div class="section" id="sec-photo">
 
     <div class="card" style="background:linear-gradient(135deg,#1a2744,#2d1b4e); color:white; border:none;">
@@ -1028,7 +1016,7 @@
             <div class="spot-desc">📍 <strong>ベストショットポイント</strong>：シャン・ド・マルス公園の正面、またはトロカデロ広場から。日の入り後のライトアップは毎時5分間光り輝く✨ 夜は三脚を使うと綺麗に撮れる！</div>
             <div class="spot-tags"><span class="spot-tag">#夜景</span><span class="spot-tag">#ライトアップ</span><span class="spot-tag">#定番</span><span class="spot-tag">#カップル</span></div>
             <div class="spot-actions">
-                <a href="https://www.google.com/maps/dir//Trocadero,+Paris,+France" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Tour+Eiffel,Paris" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
                 <a href="https://www.instagram.com/explore/tags/eiffeltower/" target="_blank" class="spot-btn spot-btn-ig">📷 Instagram</a>
             </div>
         </div>
@@ -1043,7 +1031,7 @@
             <div class="spot-desc">📍 階段を上った頂上から見るパリの景色は最高！早朝6時頃が人が少なくて黄金の光に包まれる。アメリ風の路地裏も必見🌹 テルトル広場では似顔絵師に描いてもらえる！</div>
             <div class="spot-tags"><span class="spot-tag">#パノラマ</span><span class="spot-tag">#朝活</span><span class="spot-tag">#路地裏</span><span class="spot-tag">#芸術</span></div>
             <div class="spot-actions">
-                <a href="https://www.google.com/maps/dir//Sacre+Coeur,+Montmartre,+Paris" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Sacré-Cœur,Paris" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
                 <a href="https://www.instagram.com/explore/tags/montmartre/" target="_blank" class="spot-btn spot-btn-ig">📷 Instagram</a>
             </div>
         </div>
@@ -1058,7 +1046,7 @@
             <div class="spot-desc">📍 地下のモール「カルーゼル・デュ・ルーヴル」にある逆ピラミッドは穴場映えスポット。外のガラスピラミッドは早朝・夕方の斜光が美しい。モナリザと記念撮影も忘れずに！</div>
             <div class="spot-tags"><span class="spot-tag">#アート</span><span class="spot-tag">#建築</span><span class="spot-tag">#穴場</span></div>
             <div class="spot-actions">
-                <a href="https://www.google.com/maps/dir//Louvre+Museum,+Paris" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Carrousel+du+Louvre,Paris" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
                 <a href="https://www.instagram.com/explore/tags/louvre/" target="_blank" class="spot-btn spot-btn-ig">📷 Instagram</a>
             </div>
         </div>
@@ -1073,7 +1061,7 @@
             <div class="spot-desc">📍 アーケードに囲まれた隠れ家的な庭園。モノクロの縞々の柱（ビュラン・コロンナード）がおしゃれ映え抜群！観光客も少なめで、ゆっくり写真が撮れる穴場スポット。</div>
             <div class="spot-tags"><span class="spot-tag">#穴場</span><span class="spot-tag">#アート</span><span class="spot-tag">#インスタ映え</span></div>
             <div class="spot-actions">
-                <a href="https://www.google.com/maps/dir//Palais+Royal,+Paris" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Jardin+du+Palais+Royal,Paris" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
                 <a href="https://www.instagram.com/explore/tags/palaisroyal/" target="_blank" class="spot-btn spot-btn-ig">📷 Instagram</a>
             </div>
         </div>
@@ -1088,7 +1076,7 @@
             <div class="spot-desc">📍 15mを超えるステンドグラスが圧巻！晴れた日は窓から差し込む光が虹色に輝いて写真映え最高。午前中の順光が美しい。チケットは事前予約でスムーズ（€14）。</div>
             <div class="spot-tags"><span class="spot-tag">#ステンドグラス</span><span class="spot-tag">#光</span><span class="spot-tag">#映え</span><span class="spot-tag">#穴場</span></div>
             <div class="spot-actions">
-                <a href="https://www.google.com/maps/dir//Sainte-Chapelle,+Paris" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Sainte-Chapelle,Paris" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
                 <a href="https://www.instagram.com/explore/tags/saintechapelle/" target="_blank" class="spot-btn spot-btn-ig">📷 Instagram</a>
             </div>
         </div>
@@ -1103,7 +1091,6 @@
     </div>
 </div>
 
-<!-- ===== FASHION ===== -->
 <div class="section" id="sec-fashion">
 
     <div class="card" style="background:linear-gradient(135deg,#1a2744,#5c2d6e); color:white; border:none;">
@@ -1136,7 +1123,7 @@
                     <div class="brand-price">€€€</div>
                 </div>
             </div>
-            <a href="https://www.google.com/maps/search/Le+Marais+boutiques/@48.8570,2.3540,15z" target="_blank" class="transport-link" style="margin-top:10px;">📍 マレ地区をマップで見る</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Le+Marais,Paris" target="_blank" class="transport-link" style="margin-top:10px;">📍 マレ地区をマップで見る</a>
         </div>
 
         <div class="fashion-zone">
@@ -1217,7 +1204,6 @@
     </div>
 </div>
 
-<!-- ===== FOOD ===== -->
 <div class="section" id="sec-food">
 
     <div class="card" style="background:linear-gradient(135deg,#3d1a0a,#7a3520); color:white; border:none;">
@@ -1316,13 +1302,12 @@
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
             <a href="https://www.thefork.fr/restaurants/paris-c415144" target="_blank" class="qbtn qbtn-rose" style="text-decoration:none; text-align:center;">🍽️ TheFork<br><span style="font-size:0.65rem;">レストラン予約</span></a>
             <a href="https://www.yelp.fr/search?find_loc=Paris%2C+France" target="_blank" class="qbtn qbtn-blue" style="text-decoration:none; text-align:center;">⭐ Yelp Paris<br><span style="font-size:0.65rem;">口コミ検索</span></a>
-            <a href="https://www.google.com/maps/search/cafe/@48.8566,2.3522,15z" target="_blank" class="qbtn qbtn-green" style="text-decoration:none; text-align:center;">☕ 近くのカフェ<br><span style="font-size:0.65rem;">Google Map</span></a>
+            <a href="https://www.google.com/maps/search/cafe/" target="_blank" class="qbtn qbtn-green" style="text-decoration:none; text-align:center;">☕ 近くのカフェ<br><span style="font-size:0.65rem;">Google Map</span></a>
             <a href="https://www.happycow.net/searchmap?location=Paris%2C+France" target="_blank" class="qbtn qbtn-gold" style="text-decoration:none; text-align:center;">🥗 ベジ・ビーガン<br><span style="font-size:0.65rem;">HappyCow</span></a>
         </div>
     </div>
 </div>
 
-<!-- ===== DIARY ===== -->
 <div class="section" id="sec-diary">
 
     <div class="card" style="background:linear-gradient(135deg,#2d1b4e,#1a3040); color:white; border:none;">
@@ -1330,7 +1315,6 @@
         <div style="font-size:0.78rem; opacity:0.75;">今日の思い出を残しておこう♡</div>
     </div>
 
-    <!-- 旅日記 -->
     <div class="card">
         <div class="card-title">✍️ 今日の日記</div>
         <div class="diary-date-label" id="diary-today-label"></div>
@@ -1347,7 +1331,6 @@
         <button class="diary-save-btn" onclick="saveDiaryEntry()">💾 日記を保存</button>
     </div>
 
-    <!-- 保存済み日記 -->
     <div class="card">
         <div class="card-title">📖 過去の日記</div>
         <div id="diary-entries-list"><div class="diary-empty">✨ まだ日記がありません<br>最初の記録を残してみて！</div></div>
@@ -1357,7 +1340,6 @@
         </button>
     </div>
 
-    <!-- 旅のチェックリスト -->
     <div class="card">
         <div class="card-title">✅ 旅のやりたいことリスト</div>
         <div class="pack-progress"><div class="pack-bar" id="wish-bar" style="width:0%"></div></div>
@@ -1378,7 +1360,6 @@
         </div>
     </div>
 
-    <!-- 出費メモ -->
     <div class="card">
         <div class="card-title">💰 今日の出費メモ</div>
         <div style="display:flex; gap:8px; margin-bottom:8px;">
@@ -1391,7 +1372,6 @@
     </div>
 </div>
 
-<!-- Modal -->
 <div class="modal-overlay" id="modal" onclick="closeModal(event)">
     <div class="modal-box">
         <button class="modal-close" onclick="closeModal()">×</button>
@@ -1446,7 +1426,7 @@ function initMap() {
         (pos) => {
             userLat = pos.coords.latitude;
             userLng = pos.coords.longitude;
-            // Google Maps埋め込み：search形式はAPIキー不要で動作する
+            // 修正：APIキー不要の正しいGoogle Maps埋め込みURL形式
             const src = `https://maps.google.com/maps?q=${userLat},${userLng}&z=15&output=embed&hl=ja`;
             ['map-frame','map-frame2'].forEach(id => {
                 const el = document.getElementById(id);
@@ -1468,10 +1448,12 @@ function initMap() {
 function goMap() {
     const q = document.getElementById('q').value.trim();
     if (!q) { alert('検索ワードを入力してください'); return; }
+    // 修正：現在地を中心に検索する正しいGoogle Maps URL
     window.open(`https://www.google.com/maps/search/${encodeURIComponent(q)}/@${userLat},${userLng},15z`, '_blank');
 }
 
 function searchNearby(kw) {
+    // 修正：現在地を中心に検索する正しいGoogle Maps URL
     window.open(`https://www.google.com/maps/search/${encodeURIComponent(kw)}/@${userLat},${userLng},15z`, '_blank');
 }
 
@@ -1699,7 +1681,7 @@ function renderExpenses() {
         </div>`).join('');
     if (tot) {
         tot.style.display = 'block';
-        tot.innerHTML = `合計：€${total.toFixed(2)} <span style="font-size:0.72rem;color:var(--muted);">（約${Math.round(total * 165)}円）</span>`;
+        tot.innerHTML = `合計：€${total.toFixed(2)} <span style="font-size:0.72rem;color:var(--muted);">（約${Math.round(total * rate)}円）</span>`;
     }
 }
 renderExpenses();
