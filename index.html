@@ -163,99 +163,48 @@
         .gps-btn:active { opacity: 0.85; }
 
         /* ===== WEATHER ===== */
-        .weather-main {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 10px 0;
-        }
+        .weather-main { display: flex; align-items: center; gap: 16px; padding: 10px 0; }
         .weather-icon { font-size: 3rem; }
         .weather-temp { font-size: 2.4rem; font-weight: 300; color: var(--navy); }
         .weather-desc { font-size: 0.82rem; color: var(--muted); }
-        .weather-forecast {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-            margin-top: 12px;
-        }
-        .forecast-day {
-            background: var(--blush);
-            border-radius: 10px;
-            padding: 8px 4px;
-            text-align: center;
-        }
+        .weather-forecast { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 12px; }
+        .forecast-day { background: var(--blush); border-radius: 10px; padding: 8px 4px; text-align: center; }
         .forecast-day .day { font-size: 0.68rem; color: var(--muted); }
         .forecast-day .icon { font-size: 1.3rem; }
         .forecast-day .temp { font-size: 0.78rem; font-weight: 600; color: var(--navy); }
 
         /* ===== PHRASES ===== */
-        .phrase-tabs {
-            display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px;
-        }
+        .phrase-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
         .phrase-tab {
-            padding: 5px 12px;
-            border-radius: 20px;
-            border: 1px solid var(--rose);
-            background: none;
-            font-size: 0.72rem;
-            cursor: pointer;
-            font-family: 'Noto Sans JP', sans-serif;
-            transition: all 0.2s;
+            padding: 5px 12px; border-radius: 20px; border: 1px solid var(--rose);
+            background: none; font-size: 0.72rem; cursor: pointer;
+            font-family: 'Noto Sans JP', sans-serif; transition: all 0.2s;
         }
         .phrase-tab.active { background: var(--deep-rose); color: white; border-color: var(--deep-rose); }
         .phrase-list { display: none; }
         .phrase-list.active { display: block; }
-        .phrase-item {
-            margin-bottom: 12px;
-            padding-bottom: 10px;
-            border-bottom: 1px dashed #f0e8e8;
-        }
+        .phrase-item { margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px dashed #f0e8e8; }
         .phrase-item:last-child { border-bottom: none; }
         .phrase-jp { font-size: 0.82rem; color: var(--muted); font-weight: 600; }
         .phrase-fr { font-weight: 700; color: #002395; font-size: 1rem; margin-top: 2px; }
         .phrase-kana { font-size: 0.78rem; color: #ed2939; margin-top: 1px; }
 
         /* ===== SEARCH ===== */
-        .search-row {
-            display: flex; gap: 8px; margin-bottom: 10px;
-        }
+        .search-row { display: flex; gap: 8px; margin-bottom: 10px; }
         .search-input {
-            flex: 1;
-            padding: 10px 12px;
-            border: 1.5px solid #e8dada;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            font-family: 'Noto Sans JP', sans-serif;
-            background: var(--cream);
-            outline: none;
-            transition: border-color 0.2s;
+            flex: 1; padding: 10px 12px; border: 1.5px solid #e8dada; border-radius: 10px;
+            font-size: 0.85rem; font-family: 'Noto Sans JP', sans-serif; background: var(--cream);
+            outline: none; transition: border-color 0.2s;
         }
         .search-input:focus { border-color: var(--rose); }
         .search-go {
-            padding: 10px 14px;
-            background: var(--deep-rose);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            font-family: 'Noto Sans JP', sans-serif;
+            padding: 10px 14px; background: var(--deep-rose); color: white; border: none;
+            border-radius: 10px; font-size: 0.85rem; cursor: pointer; font-family: 'Noto Sans JP', sans-serif;
         }
-        .quick-btns {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-top: 4px;
-        }
+        .quick-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px; }
         .qbtn {
-            padding: 10px;
-            border-radius: 10px;
-            border: 1px solid;
-            font-size: 0.78rem;
-            cursor: pointer;
-            font-family: 'Noto Sans JP', sans-serif;
-            font-weight: 600;
-            transition: opacity 0.15s;
+            padding: 10px; border-radius: 10px; border: 1px solid; font-size: 0.78rem;
+            cursor: pointer; font-family: 'Noto Sans JP', sans-serif; font-weight: 600; transition: opacity 0.15s;
         }
         .qbtn:active { opacity: 0.8; }
         .qbtn-rose  { background: #fff0f3; color: #c0637a; border-color: #f5c0cc; }
@@ -264,36 +213,15 @@
         .qbtn-gold  { background: #fffaee; color: #8a6400; border-color: #e8d080; }
 
         /* ===== CURRENCY ===== */
-        .currency-row {
-            display: flex; align-items: center; gap: 10px;
-        }
+        .currency-row { display: flex; align-items: center; gap: 10px; }
         .currency-input {
-            flex: 1;
-            padding: 12px;
-            border: 1.5px solid #e8dada;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-family: 'Noto Sans JP', sans-serif;
-            text-align: center;
-            background: var(--cream);
-            outline: none;
+            flex: 1; padding: 12px; border: 1.5px solid #e8dada; border-radius: 10px;
+            font-size: 1.1rem; font-family: 'Noto Sans JP', sans-serif; text-align: center;
+            background: var(--cream); outline: none;
         }
         .currency-label { font-size: 0.75rem; color: var(--muted); text-align: center; margin-top: 3px; }
         .rate-note { font-size: 0.7rem; color: var(--muted); text-align: center; margin-top: 8px; }
         .currency-swap { font-size: 1.3rem; cursor: pointer; }
-
-        /* ===== TIPS / MANNERS ===== */
-        .tips-category { margin-bottom: 14px; }
-        .tips-cat-title {
-            font-size: 0.82rem; font-weight: 700; color: var(--deep-rose);
-            margin-bottom: 8px; display: flex; align-items: center; gap: 5px;
-        }
-        .tip-item {
-            background: var(--blush); border-radius: 10px;
-            padding: 10px 12px; margin-bottom: 6px;
-            font-size: 0.82rem; line-height: 1.6; border-left: 3px solid var(--rose);
-        }
-        .tip-item strong { color: var(--navy); }
 
         /* ===== EMERGENCY ===== */
         .emergency-big { display: grid; grid-template-columns: 1fr; gap: 10px; }
@@ -309,59 +237,36 @@
         .e-blue   { background: #eff6ff; color: #1e40af; border: 1.5px solid #93c5fd; }
         .e-navy   { background: #1a2744; color: white; }
         .e-gold   { background: #fefce8; color: #854d0e; border: 1.5px solid #fde047; }
+        
+        /* ===== OTHERS ===== */
+        .tips-category { margin-bottom: 14px; }
+        .tips-cat-title { font-size: 0.82rem; font-weight: 700; color: var(--deep-rose); margin-bottom: 8px; display: flex; align-items: center; gap: 5px; }
+        .tip-item { background: var(--blush); border-radius: 10px; padding: 10px 12px; margin-bottom: 6px; font-size: 0.82rem; line-height: 1.6; border-left: 3px solid var(--rose); }
+        .tip-item strong { color: var(--navy); }
 
-        /* ===== NEWS ===== */
-        .news-item { padding: 12px 0; border-bottom: 1px solid #f0e8e8; cursor: pointer; }
-        .news-item:last-child { border-bottom: none; }
-        .news-title { font-size: 0.85rem; font-weight: 600; line-height: 1.4; color: var(--navy); }
-        .news-meta  { font-size: 0.7rem; color: var(--muted); margin-top: 3px; }
-
-        /* ===== TRANSPORT ===== */
         .transport-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
         .transport-card { background: var(--blush); border-radius: 12px; padding: 12px; text-align: center; }
         .transport-card .t-icon { font-size: 1.6rem; }
         .transport-card .t-name { font-size: 0.75rem; font-weight: 700; color: var(--navy); margin-top: 4px; }
         .transport-card .t-desc { font-size: 0.68rem; color: var(--muted); margin-top: 2px; }
-        .transport-link {
-            display: block; text-align: center; margin-top: 8px; padding: 9px;
-            background: var(--navy); color: white; text-decoration: none;
-            border-radius: 10px; font-size: 0.8rem; font-weight: 600;
-        }
+        .transport-link { display: block; text-align: center; margin-top: 8px; padding: 9px; background: var(--navy); color: white; text-decoration: none; border-radius: 10px; font-size: 0.8rem; font-weight: 600; }
 
-        /* ===== PHOTO SPOTS ===== */
-        .spot-card {
-            background: var(--white); border-radius: 14px; overflow: hidden;
-            margin-bottom: 14px; box-shadow: var(--shadow); border: 1px solid rgba(200,170,170,0.15);
-        }
-        .spot-header {
-            background: linear-gradient(135deg, #2d1b4e, #1a2744); color: white;
-            padding: 14px 16px; display: flex; align-items: center; gap: 10px;
-        }
+        .spot-card { background: var(--white); border-radius: 14px; overflow: hidden; margin-bottom: 14px; box-shadow: var(--shadow); border: 1px solid rgba(200,170,170,0.15); }
+        .spot-header { background: linear-gradient(135deg, #2d1b4e, #1a2744); color: white; padding: 14px 16px; display: flex; align-items: center; gap: 10px; }
         .spot-emoji { font-size: 2rem; }
         .spot-name { font-family: 'Playfair Display', serif; font-size: 1rem; }
         .spot-area { font-size: 0.7rem; color: rgba(255,255,255,0.65); margin-top: 2px; }
         .spot-body { padding: 14px 16px; }
         .spot-desc { font-size: 0.82rem; line-height: 1.65; color: var(--text); }
         .spot-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
-        .spot-tag {
-            background: var(--blush); color: var(--deep-rose); border-radius: 20px;
-            padding: 3px 10px; font-size: 0.7rem; font-weight: 600;
-        }
+        .spot-tag { background: var(--blush); color: var(--deep-rose); border-radius: 20px; padding: 3px 10px; font-size: 0.7rem; font-weight: 600; }
         .spot-actions { display: flex; gap: 8px; margin-top: 10px; }
-        .spot-btn {
-            flex: 1; padding: 8px; border-radius: 8px; border: none;
-            font-size: 0.75rem; font-family: 'Noto Sans JP', sans-serif; font-weight: 600;
-            cursor: pointer; text-align: center; text-decoration: none; display: block;
-        }
+        .spot-btn { flex: 1; padding: 8px; border-radius: 8px; border: none; font-size: 0.75rem; font-family: 'Noto Sans JP', sans-serif; font-weight: 600; cursor: pointer; text-align: center; text-decoration: none; display: block; }
         .spot-btn-map { background: #eef5ff; color: #1a4fa0; }
         .spot-btn-ig  { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; }
 
-        /* ===== FASHION ===== */
         .fashion-zone { margin-bottom: 16px; }
-        .zone-title {
-            font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--navy);
-            margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid var(--blush);
-        }
+        .zone-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--navy); margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid var(--blush); }
         .brand-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
         .brand-card { background: var(--cream); border-radius: 12px; padding: 12px; border: 1px solid #eddada; }
         .brand-name { font-size: 0.82rem; font-weight: 700; color: var(--navy); }
@@ -373,7 +278,6 @@
         .size-table td { padding: 6px 8px; text-align: center; border-bottom: 1px solid #f0e8d8; }
         .size-table tr:nth-child(even) td { background: #fdf5e0; }
 
-        /* ===== FOOD ===== */
         .food-item { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid #f0e8e8; }
         .food-item:last-child { border-bottom: none; }
         .food-emoji { font-size: 2.2rem; flex-shrink: 0; }
@@ -382,30 +286,15 @@
         .food-desc { font-size: 0.78rem; color: var(--muted); margin-top: 3px; line-height: 1.5; }
         .food-price { font-size: 0.72rem; color: var(--deep-rose); font-weight: 700; margin-top: 4px; }
 
-        /* ===== DIARY & MODAL ===== */
         .diary-toolbar { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
-        .diary-mood-btn {
-            padding: 6px 12px; border-radius: 20px; border: 1.5px solid #e8d0d8;
-            background: none; font-size: 0.85rem; cursor: pointer; transition: all 0.15s;
-        }
+        .diary-mood-btn { padding: 6px 12px; border-radius: 20px; border: 1.5px solid #e8d0d8; background: none; font-size: 0.85rem; cursor: pointer; transition: all 0.15s; }
         .diary-mood-btn.selected { background: var(--deep-rose); border-color: var(--deep-rose); color: white; }
         .diary-date-label { font-family: 'Playfair Display', serif; font-size: 0.9rem; color: var(--deep-rose); margin-bottom: 6px; }
-        .diary-textarea {
-            width: 100%; min-height: 120px; padding: 12px; border: 1.5px solid #e8dada;
-            border-radius: 10px; font-family: 'Noto Sans JP', sans-serif; font-size: 0.85rem;
-            line-height: 1.7; resize: vertical; background: var(--cream); outline: none; box-sizing: border-box;
-        }
+        .diary-textarea { width: 100%; min-height: 120px; padding: 12px; border: 1.5px solid #e8dada; border-radius: 10px; font-family: 'Noto Sans JP', sans-serif; font-size: 0.85rem; line-height: 1.7; resize: vertical; background: var(--cream); outline: none; box-sizing: border-box; }
         .diary-textarea:focus { border-color: var(--rose); }
-        .diary-save-btn {
-            width: 100%; margin-top: 10px; padding: 11px; background: linear-gradient(135deg, var(--deep-rose), #9d3060);
-            color: white; border: none; border-radius: 10px; font-size: 0.88rem; font-family: 'Noto Sans JP', sans-serif;
-            font-weight: 700; cursor: pointer;
-        }
+        .diary-save-btn { width: 100%; margin-top: 10px; padding: 11px; background: linear-gradient(135deg, var(--deep-rose), #9d3060); color: white; border: none; border-radius: 10px; font-size: 0.88rem; font-family: 'Noto Sans JP', sans-serif; font-weight: 700; cursor: pointer; }
         .diary-entries { margin-top: 16px; }
-        .diary-entry {
-            background: var(--blush); border-radius: 12px; padding: 14px; margin-bottom: 10px;
-            border-left: 4px solid var(--rose); animation: fadeUp 0.3s ease; position: relative;
-        }
+        .diary-entry { background: var(--blush); border-radius: 12px; padding: 14px; margin-bottom: 10px; border-left: 4px solid var(--rose); animation: fadeUp 0.3s ease; position: relative; }
         .diary-entry-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
         .diary-entry-meta { font-size: 0.72rem; color: var(--muted); }
         .diary-entry-text { font-size: 0.82rem; line-height: 1.7; white-space: pre-wrap; }
@@ -455,7 +344,7 @@
         <div class="card-title">📍 現在地マップ</div>
         <button class="gps-btn" onclick="initMap()">📡 現在地を取得してマップ表示</button>
         <div id="map-status" class="map-status">ボタンを押すと現在地周辺を表示します</div>
-        <iframe id="map-frame" src="https://maps.google.com/maps?q=48.8566,2.3522&z=13&output=embed" style="width:100%;height:220px;border-radius:12px;border:none;display:block;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe id="map-frame" src="https://maps.google.com/maps?q=Paris&t=&z=13&ie=UTF8&iwloc=&output=embed" style="width:100%;height:220px;border-radius:12px;border:none;display:block;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
     <div class="card">
@@ -468,7 +357,7 @@
     <div class="card">
         <div class="card-title">📰 フランス・旅行ニュース（日本語）</div>
         <div id="news-content">
-            <div class="news-item" onclick="window.open('https://www.afpbb.com/subcategory/france','_blank')">
+            <div class="news-item" onclick="window.open('https://www.afpbb.com/subcategory/French','_blank')">
                 <div class="news-title">AFPBB News - フランス最新ニュース</div>
                 <div class="news-meta">AFP通信 日本語版</div>
             </div>
@@ -513,7 +402,7 @@
         <div class="card-title">📍 現在地周辺検索</div>
         <button class="gps-btn" onclick="initMap()">📡 現在地を取得</button>
         <div id="map-status2" class="map-status" style="margin-bottom:8px;"></div>
-        <iframe id="map-frame2" src="https://maps.google.com/maps?q=48.8566,2.3522&z=13&output=embed" style="width:100%; height:240px; border-radius:12px; border:none;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe id="map-frame2" src="https://maps.google.com/maps?q=Paris&t=&z=13&ie=UTF8&iwloc=&output=embed" style="width:100%; height:240px; border-radius:12px; border:none;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
     <div class="card">
         <div class="card-title">🔍 キーワードで地図検索</div>
@@ -532,15 +421,25 @@
             <button class="qbtn qbtn-green" onclick="searchNearby('メトロ駅 地下鉄')">🚇 メトロ駅</button>
         </div>
     </div>
+    
     <div class="card">
         <div class="card-title">🗺️ 人気スポットへのルート案内</div>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-            <a href="https://www.google.com/maps/dir/?api=1&destination=Tour+Eiffel" target="_blank" class="qbtn qbtn-blue" style="text-decoration:none; text-align:center; padding:10px 0;">🗼 エッフェル塔</a>
-            <a href="https://www.google.com/maps/dir/?api=1&destination=Musée+du+Louvre" target="_blank" class="qbtn qbtn-rose" style="text-decoration:none; text-align:center; padding:10px 0;">🏛️ ルーヴル美術館</a>
-            <a href="https://www.google.com/maps/dir/?api=1&destination=Cathédrale+Notre-Dame+de+Paris" target="_blank" class="qbtn qbtn-gold" style="text-decoration:none; text-align:center; padding:10px 0;">⛪ ノートルダム大聖堂</a>
-            <a href="https://www.google.com/maps/dir/?api=1&destination=Arc+de+Triomphe" target="_blank" class="qbtn qbtn-green" style="text-decoration:none; text-align:center; padding:10px 0;">🏛️ 凱旋門</a>
-            <a href="https://www.google.com/maps/dir/?api=1&destination=Montmartre" target="_blank" class="qbtn qbtn-rose" style="text-decoration:none; text-align:center; padding:10px 0;">🎨 モンマルトル</a>
-            <a href="https://www.google.com/maps/dir/?api=1&destination=Musée+d'Orsay" target="_blank" class="qbtn qbtn-blue" style="text-decoration:none; text-align:center; padding:10px 0;">🖼️ オルセー美術館</a>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:16px;">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=エッフェル塔" target="_blank" class="qbtn qbtn-blue" style="text-decoration:none; text-align:center; padding:10px 0;">🗼 エッフェル塔</a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=ルーヴル美術館" target="_blank" class="qbtn qbtn-rose" style="text-decoration:none; text-align:center; padding:10px 0;">🏛️ ルーヴル美術館</a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=ノートルダム大聖堂" target="_blank" class="qbtn qbtn-gold" style="text-decoration:none; text-align:center; padding:10px 0;">⛪ ノートルダム大聖堂</a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=凱旋門" target="_blank" class="qbtn qbtn-green" style="text-decoration:none; text-align:center; padding:10px 0;">🏛️ 凱旋門</a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=モンマルトル" target="_blank" class="qbtn qbtn-rose" style="text-decoration:none; text-align:center; padding:10px 0;">🎨 モンマルトル</a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=オルセー美術館" target="_blank" class="qbtn qbtn-blue" style="text-decoration:none; text-align:center; padding:10px 0;">🖼️ オルセー美術館</a>
+        </div>
+        
+        <div style="border-top:1px dashed var(--blush); padding-top:12px;">
+            <div style="font-size:0.85rem; font-weight:600; color:var(--navy); margin-bottom:8px;">📍 現在地から自由に行き先をルート検索</div>
+            <div class="search-row">
+                <input type="text" id="route-dest-map" class="search-input" placeholder="行き先 (例: 凱旋門)">
+                <button class="search-go" onclick="routeTo('route-dest-map')">ルート表示</button>
+            </div>
+            <div style="font-size:0.7rem; color:var(--muted);">※ボタンを押すとGoogle Mapsが開き、現在地からのルートが自動表示されます。</div>
         </div>
     </div>
 </div>
@@ -554,6 +453,11 @@
             <button class="phrase-tab" onclick="switchPhrase('shop',this)">お店</button>
             <button class="phrase-tab" onclick="switchPhrase('trouble',this)">困った時</button>
             <button class="phrase-tab" onclick="switchPhrase('transport',this)">交通</button>
+            <button class="phrase-tab" onclick="switchPhrase('numbers',this)">数字</button>
+            <button class="phrase-tab" onclick="switchPhrase('units',this)">単位</button>
+            <button class="phrase-tab" onclick="switchPhrase('exclamation',this)">感嘆</button>
+            <button class="phrase-tab" onclick="switchPhrase('refusal',this)">断り</button>
+            <button class="phrase-tab" onclick="switchPhrase('complaint',this)">クレーム</button>
         </div>
         
         <div class="phrase-list active" id="pl-basic">
@@ -563,40 +467,73 @@
             <div class="phrase-item"><div class="phrase-jp">すみません</div><div class="phrase-fr">Excusez-moi</div><div class="phrase-kana">エクスキュゼ モワ</div></div>
             <div class="phrase-item"><div class="phrase-jp">はい / いいえ</div><div class="phrase-fr">Oui / Non</div><div class="phrase-kana">ウィ / ノン</div></div>
             <div class="phrase-item"><div class="phrase-jp">わかりません</div><div class="phrase-fr">Je ne comprends pas</div><div class="phrase-kana">ジュ ヌ コンプラン パ</div></div>
-            <div class="phrase-item"><div class="phrase-jp">英語は話せますか？</div><div class="phrase-fr">Parlez-vous anglais?</div><div class="phrase-kana">パルレ ヴ ザングレ？</div></div>
-            <div class="phrase-item"><div class="phrase-jp">トイレはどこですか？</div><div class="phrase-fr">Où sont les toilettes?</div><div class="phrase-kana">ウ ソン レ トワレット？</div></div>
+            <div class="phrase-item"><div class="phrase-jp">英語は話せますか？</div><div class="phrase-fr">Parlez-vous anglais ?</div><div class="phrase-kana">パルレ ヴ ザングレ？</div></div>
+            <div class="phrase-item"><div class="phrase-jp">トイレはどこですか？</div><div class="phrase-fr">Où sont les toilettes ?</div><div class="phrase-kana">ウ ソン レ トワレット？</div></div>
         </div>
         <div class="phrase-list" id="pl-restaurant">
             <div class="phrase-item"><div class="phrase-jp">お会計をお願いします</div><div class="phrase-fr">L'addition, s'il vous plaît</div><div class="phrase-kana">ラディスィヨン シル ヴ プレ</div></div>
             <div class="phrase-item"><div class="phrase-jp">これをください</div><div class="phrase-fr">Je prends ça</div><div class="phrase-kana">ジュ プラン サ</div></div>
-            <div class="phrase-item"><div class="phrase-jp">おすすめは何ですか？</div><div class="phrase-fr">Qu'est-ce que vous recommandez?</div><div class="phrase-kana">ケス ク ヴ ルコマンデ？</div></div>
+            <div class="phrase-item"><div class="phrase-jp">おすすめは何ですか？</div><div class="phrase-fr">Qu'est-ce que vous recommandez ?</div><div class="phrase-kana">ケス ク ヴ ルコマンデ？</div></div>
             <div class="phrase-item"><div class="phrase-jp">〜アレルギーがあります</div><div class="phrase-fr">Je suis allergique à...</div><div class="phrase-kana">ジュ スィ ザレルジック ア...</div></div>
-            <div class="phrase-item"><div class="phrase-jp">おいしい！</div><div class="phrase-fr">C'est délicieux!</div><div class="phrase-kana">セ デリスィウ！</div></div>
             <div class="phrase-item"><div class="phrase-jp">予約したいのですが</div><div class="phrase-fr">Je voudrais réserver</div><div class="phrase-kana">ジュ ヴドレ レゼルヴェ</div></div>
-            <div class="phrase-item"><div class="phrase-jp">テイクアウトできますか？</div><div class="phrase-fr">C'est possible à emporter?</div><div class="phrase-kana">セ ポシブル ア アンポルテ？</div></div>
+            <div class="phrase-item"><div class="phrase-jp">テイクアウトできますか？</div><div class="phrase-fr">C'est possible à emporter ?</div><div class="phrase-kana">セ ポシブル ア アンポルテ？</div></div>
         </div>
         <div class="phrase-list" id="pl-shop">
-            <div class="phrase-item"><div class="phrase-jp">いくらですか？</div><div class="phrase-fr">C'est combien?</div><div class="phrase-kana">セ コンビヤン？</div></div>
-            <div class="phrase-item"><div class="phrase-jp">試着してもいいですか？</div><div class="phrase-fr">Je peux l'essayer?</div><div class="phrase-kana">ジュ プ レセイエ？</div></div>
-            <div class="phrase-item"><div class="phrase-jp">別のサイズはありますか？</div><div class="phrase-fr">Vous avez une autre taille?</div><div class="phrase-kana">ヴ ザヴェ ユン オートル タイユ？</div></div>
-            <div class="phrase-item"><div class="phrase-jp">カードで払えますか？</div><div class="phrase-fr">Je peux payer par carte?</div><div class="phrase-kana">ジュ プ ペイエ パール カルト？</div></div>
-            <div class="phrase-item"><div class="phrase-jp">免税はできますか？</div><div class="phrase-fr">Vous faites la détaxe?</div><div class="phrase-kana">ヴ フェット ラ デタックス？</div></div>
+            <div class="phrase-item"><div class="phrase-jp">いくらですか？</div><div class="phrase-fr">C'est combien ?</div><div class="phrase-kana">セ コンビヤン？</div></div>
+            <div class="phrase-item"><div class="phrase-jp">試着してもいいですか？</div><div class="phrase-fr">Je peux l'essayer ?</div><div class="phrase-kana">ジュ プ レセイエ？</div></div>
+            <div class="phrase-item"><div class="phrase-jp">別のサイズはありますか？</div><div class="phrase-fr">Vous avez une autre taille ?</div><div class="phrase-kana">ヴ ザヴェ ユン オートル タイユ？</div></div>
+            <div class="phrase-item"><div class="phrase-jp">カードで払えますか？</div><div class="phrase-fr">Je peux payer par carte ?</div><div class="phrase-kana">ジュ プ ペイエ パール カルト？</div></div>
+            <div class="phrase-item"><div class="phrase-jp">免税はできますか？</div><div class="phrase-fr">Vous faites la détaxe ?</div><div class="phrase-kana">ヴ フェット ラ デタックス？</div></div>
             <div class="phrase-item"><div class="phrase-jp">袋をいただけますか？</div><div class="phrase-fr">Un sac, s'il vous plaît</div><div class="phrase-kana">アン サック シル ヴ プレ</div></div>
         </div>
         <div class="phrase-list" id="pl-trouble">
-            <div class="phrase-item"><div class="phrase-jp">助けてください！</div><div class="phrase-fr">Au secours!</div><div class="phrase-kana">オ スクール！</div></div>
+            <div class="phrase-item"><div class="phrase-jp">助けてください！</div><div class="phrase-fr">Au secours !</div><div class="phrase-kana">オ スクール！</div></div>
             <div class="phrase-item"><div class="phrase-jp">財布を盗まれました</div><div class="phrase-fr">On m'a volé mon portefeuille</div><div class="phrase-kana">オン マ ヴォレ モン ポルトゥフィユ</div></div>
             <div class="phrase-item"><div class="phrase-jp">迷子になりました</div><div class="phrase-fr">Je me suis perdu(e)</div><div class="phrase-kana">ジュ ム スィ ペルデュ</div></div>
             <div class="phrase-item"><div class="phrase-jp">病院に行きたいです</div><div class="phrase-fr">Je voudrais aller à l'hôpital</div><div class="phrase-kana">ジュ ヴドレ アレ ア ロピタル</div></div>
             <div class="phrase-item"><div class="phrase-jp">警察を呼んでください</div><div class="phrase-fr">Appelez la police, s'il vous plaît</div><div class="phrase-kana">アプレ ラ ポリス シル ヴ プレ</div></div>
-            <div class="phrase-item"><div class="phrase-jp">日本語を話せる人はいますか？</div><div class="phrase-fr">Y a-t-il quelqu'un qui parle japonais?</div><div class="phrase-kana">イ ヤティル ケルカン キ パール ジャポネ？</div></div>
+            <div class="phrase-item"><div class="phrase-jp">日本語を話せる人はいますか？</div><div class="phrase-fr">Y a-t-il quelqu'un qui parle japonais ?</div><div class="phrase-kana">イ ヤティル ケルカン キ パール ジャポネ？</div></div>
         </div>
         <div class="phrase-list" id="pl-transport">
             <div class="phrase-item"><div class="phrase-jp">〜に行きたいです</div><div class="phrase-fr">Je voudrais aller à...</div><div class="phrase-kana">ジュ ヴドレ アレ ア...</div></div>
             <div class="phrase-item"><div class="phrase-jp">〜駅はどこですか？</div><div class="phrase-fr">Où est la station...?</div><div class="phrase-kana">ウ エ ラ スタスィヨン...？</div></div>
             <div class="phrase-item"><div class="phrase-jp">空港まで一枚ください</div><div class="phrase-fr">Un billet pour l'aéroport, s'il vous plaît</div><div class="phrase-kana">アン ビエ プール ラエロポール シル ヴ プレ</div></div>
-            <div class="phrase-item"><div class="phrase-jp">次の電車は何時ですか？</div><div class="phrase-fr">À quelle heure est le prochain train?</div><div class="phrase-kana">ア ケルール エ ル プロシャン トラン？</div></div>
+            <div class="phrase-item"><div class="phrase-jp">次の電車は何時ですか？</div><div class="phrase-fr">À quelle heure est le prochain train ?</div><div class="phrase-kana">ア ケルール エ ル プロシャン トラン？</div></div>
             <div class="phrase-item"><div class="phrase-jp">タクシーを呼んでください</div><div class="phrase-fr">Appelez un taxi, s'il vous plaît</div><div class="phrase-kana">アプレ アン タクスィ シル ヴ プレ</div></div>
+        </div>
+        
+        <div class="phrase-list" id="pl-numbers">
+            <div class="phrase-item"><div class="phrase-jp">1 / 2 / 3</div><div class="phrase-fr">Un / Deux / Trois</div><div class="phrase-kana">アン / ドゥ / トロワ</div></div>
+            <div class="phrase-item"><div class="phrase-jp">4 / 5 / 6</div><div class="phrase-fr">Quatre / Cinq / Six</div><div class="phrase-kana">キャトル / サンク / シス</div></div>
+            <div class="phrase-item"><div class="phrase-jp">7 / 8 / 9</div><div class="phrase-fr">Sept / Huit / Neuf</div><div class="phrase-kana">セット / ユイット / ヌフ</div></div>
+            <div class="phrase-item"><div class="phrase-jp">10</div><div class="phrase-fr">Dix</div><div class="phrase-kana">ディス</div></div>
+            <div class="phrase-item"><div class="phrase-jp">100</div><div class="phrase-fr">Cent</div><div class="phrase-kana">サン</div></div>
+        </div>
+        <div class="phrase-list" id="pl-units">
+            <div class="phrase-item"><div class="phrase-jp">1つ / 2つ (個数)</div><div class="phrase-fr">Une pièce / Deux pièces</div><div class="phrase-kana">ユン ピエス / ドゥ ピエス</div></div>
+            <div class="phrase-item"><div class="phrase-jp">1人 / 2人 (人数)</div><div class="phrase-fr">Une personne / Deux personnes</div><div class="phrase-kana">ユン ペルソンヌ / ドゥ ペルソンヌ</div></div>
+            <div class="phrase-item"><div class="phrase-jp">〜グラム</div><div class="phrase-fr">... grammes</div><div class="phrase-kana">... グラム</div></div>
+            <div class="phrase-item"><div class="phrase-jp">1杯の〜 (飲み物)</div><div class="phrase-fr">Un verre de ... / Une tasse de ...</div><div class="phrase-kana">アン ヴェール ドゥ ... / ユン タス ドゥ ...</div></div>
+        </div>
+        <div class="phrase-list" id="pl-exclamation">
+            <div class="phrase-item"><div class="phrase-jp">素晴らしい！</div><div class="phrase-fr">C'est magnifique !</div><div class="phrase-kana">セ マニフィーク！</div></div>
+            <div class="phrase-item"><div class="phrase-jp">可愛い！/ 素敵！</div><div class="phrase-fr">C'est mignon ! / C'est super !</div><div class="phrase-kana">セ ミニョン！ / セ シュペール！</div></div>
+            <div class="phrase-item"><div class="phrase-jp">本当？</div><div class="phrase-fr">Vraiment ?</div><div class="phrase-kana">ヴレマン？</div></div>
+            <div class="phrase-item"><div class="phrase-jp">おいしい！</div><div class="phrase-fr">C'est délicieux ! / C'est bon !</div><div class="phrase-kana">セ デリスィウ！ / セ ボン！</div></div>
+        </div>
+        <div class="phrase-list" id="pl-refusal">
+            <div class="phrase-item"><div class="phrase-jp">結構です</div><div class="phrase-fr">Non, merci</div><div class="phrase-kana">ノン、メルスィ</div></div>
+            <div class="phrase-item"><div class="phrase-jp">いりません</div><div class="phrase-fr">Je n'en veux pas</div><div class="phrase-kana">ジュ ナン ヴ パ</div></div>
+            <div class="phrase-item"><div class="phrase-jp">興味ありません</div><div class="phrase-fr">Ça ne m'intéresse pas</div><div class="phrase-kana">サ ヌ マンテレス パ</div></div>
+            <div class="phrase-item"><div class="phrase-jp">もう十分です</div><div class="phrase-fr">Ça suffit, merci</div><div class="phrase-kana">サ スュフィ、メルスィ</div></div>
+            <div class="phrase-item"><div class="phrase-jp">触らないで！</div><div class="phrase-fr">Ne me touchez pas !</div><div class="phrase-kana">ヌ ム トゥシェ パ！</div></div>
+        </div>
+        <div class="phrase-list" id="pl-complaint">
+            <div class="phrase-item"><div class="phrase-jp">動かない / 壊れています</div><div class="phrase-fr">Ça ne marche pas / C'est cassé</div><div class="phrase-kana">サ ヌ マルシュ パ / セ カセ</div></div>
+            <div class="phrase-item"><div class="phrase-jp">注文と違います</div><div class="phrase-fr">Ce n'est pas ce que j'ai commandé</div><div class="phrase-kana">ス ネ パ ス ク ジェ コマンデ</div></div>
+            <div class="phrase-item"><div class="phrase-jp">お湯が出ません</div><div class="phrase-fr">Il n'y a pas d'eau chaude</div><div class="phrase-kana">イル ニャ パ ドー ショード</div></div>
+            <div class="phrase-item"><div class="phrase-jp">うるさいです</div><div class="phrase-fr">C'est trop bruyant</div><div class="phrase-kana">セ トロ ブリュイヤン</div></div>
+            <div class="phrase-item"><div class="phrase-jp">遅すぎます（まだですか？）</div><div class="phrase-fr">C'est trop long.</div><div class="phrase-kana">セ トロ ロン</div></div>
         </div>
     </div>
 </div>
@@ -666,9 +603,18 @@
                 <div class="t-desc">シェアサイクル。30分以内無料（加入後）</div>
             </div>
         </div>
-        <a href="https://www.obonparis.com/ja/magazine/how-to-use-paris-metro" target="_blank" class="transport-link">🗺️ パリの地下鉄（メトロ）乗り方完全ガイド</a>
-        <a href="https://www.google.com/maps/dir/?api=1" target="_blank" class="transport-link" style="margin-top:6px; background:var(--deep-rose);">📍 Google Mapで現在地から経路検索</a>
+        
+        <a href="https://amazing-trip.xyz/t-blog/metro-remap/2-2/" target="_blank" class="transport-link">🗺️ パリの地下鉄（メトロ）乗り方完全ガイド</a>
+        
+        <div style="background:var(--blush); padding:12px; border-radius:12px; margin-top:10px;">
+            <div style="font-size:0.8rem; font-weight:700; color:var(--navy); margin-bottom:6px;">📍 現在地からルート検索</div>
+            <div style="display:flex; gap:6px;">
+                <input type="text" id="route-dest-transport" class="search-input" placeholder="行き先 (例: シャルル・ド・ゴール空港)" style="flex:1;">
+                <button class="search-go" onclick="routeTo('route-dest-transport')">ルート表示</button>
+            </div>
+        </div>
     </div>
+    
     <div class="card">
         <div class="card-title">✈️ 空港アクセス</div>
         <div class="tip-item">🏙️ <strong>CDG（シャルル・ド・ゴール）空港</strong><br>RER B線で約35分 €11.80 / タクシー 約€55〜65</div>
@@ -739,7 +685,7 @@
             <a href="tel:18" class="e-btn e-red">🔥 消防 Pompiers <strong>18</strong></a>
             <a href="tel:+33145017767" class="e-btn e-navy">🏛️ 在フランス日本大使館<br><small style="font-weight:300;">+33-1-4501-7767</small></a>
             <a href="https://www.fr.emb-japan.go.jp/itpr_ja/iryo.html" target="_blank" class="e-btn e-pink">🏥 日本語が通じる病院リスト</a>
-            <a href="https://www.smbc-card.com/mem/support/lost.jsp" target="_blank" class="e-btn e-gold">💳 三井住友カード紛失・盗難</a>
+            <a href="https://www.smbc-card.com/mem/goriyo/lost.jsp" target="_blank" class="e-btn e-gold">💳 三井住友カード紛失・盗難</a>
             <a href="https://www.anzen.mofa.go.jp/info/pcinfectionspothazardinfo_170.html" target="_blank" class="e-btn e-blue">📞 外務省・海外安全情報</a>
         </div>
     </div>
@@ -768,7 +714,7 @@
             <div class="spot-desc">📍 <strong>ベストショットポイント</strong>：シャン・ド・マルス公園の正面、またはトロカデロ広場から。日の入り後のライトアップは毎時5分間光り輝く✨ 夜は三脚を使うと綺麗に撮れる！</div>
             <div class="spot-tags"><span class="spot-tag">#夜景</span><span class="spot-tag">#ライトアップ</span><span class="spot-tag">#定番</span><span class="spot-tag">#カップル</span></div>
             <div class="spot-actions">
-                <a href="https://www.google.com/maps/search/?api=1&query=Tour+Eiffel" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=エッフェル塔" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
                 <a href="https://www.instagram.com/explore/tags/エッフェル塔/" target="_blank" class="spot-btn spot-btn-ig">📷 Instagram</a>
             </div>
         </div>
@@ -783,7 +729,7 @@
             <div class="spot-desc">📍 階段を上った頂上から見るパリの景色は最高！早朝6時頃が人が少なくて黄金の光に包まれる。アメリ風の路地裏も必見🌹 テルトル広場では似顔絵師に描いてもらえる！</div>
             <div class="spot-tags"><span class="spot-tag">#パノラマ</span><span class="spot-tag">#朝活</span><span class="spot-tag">#路地裏</span><span class="spot-tag">#芸術</span></div>
             <div class="spot-actions">
-                <a href="https://www.google.com/maps/search/?api=1&query=Montmartre" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=モンマルトル" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
                 <a href="https://www.instagram.com/explore/tags/モンマルトル/" target="_blank" class="spot-btn spot-btn-ig">📷 Instagram</a>
             </div>
         </div>
@@ -798,7 +744,7 @@
             <div class="spot-desc">📍 地下のモール「カルーゼル・デュ・ルーヴル」にある逆ピラミッドは穴場映えスポット。外のガラスピラミッドは早朝・夕方の斜光が美しい。モナリザと記念撮影も忘れずに！</div>
             <div class="spot-tags"><span class="spot-tag">#アート</span><span class="spot-tag">#建築</span><span class="spot-tag">#穴場</span></div>
             <div class="spot-actions">
-                <a href="https://www.google.com/maps/search/?api=1&query=Musée+du+Louvre" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=ルーヴル美術館" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
                 <a href="https://www.instagram.com/explore/tags/ルーヴル美術館/" target="_blank" class="spot-btn spot-btn-ig">📷 Instagram</a>
             </div>
         </div>
@@ -813,7 +759,7 @@
             <div class="spot-desc">📍 アーケードに囲まれた隠れ家的な庭園。モノクロの縞々の柱（ビュラン・コロンナード）がおしゃれ映え抜群！観光客も少なめで、ゆっくり写真が撮れる穴場スポット。</div>
             <div class="spot-tags"><span class="spot-tag">#穴場</span><span class="spot-tag">#アート</span><span class="spot-tag">#インスタ映え</span></div>
             <div class="spot-actions">
-                <a href="https://www.google.com/maps/search/?api=1&query=Palais-Royal" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=パレロワイヤル" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
                 <a href="https://www.instagram.com/explore/tags/パレロワイヤル/" target="_blank" class="spot-btn spot-btn-ig">📷 Instagram</a>
             </div>
         </div>
@@ -828,7 +774,7 @@
             <div class="spot-desc">📍 15mを超えるステンドグラスが圧巻！晴れた日は窓から差し込む光が虹色に輝いて写真映え最高。午前中の順光が美しい。チケットは事前予約でスムーズ（€14）。</div>
             <div class="spot-tags"><span class="spot-tag">#ステンドグラス</span><span class="spot-tag">#光</span><span class="spot-tag">#映え</span><span class="spot-tag">#穴場</span></div>
             <div class="spot-actions">
-                <a href="https://www.google.com/maps/search/?api=1&query=Sainte-Chapelle" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=サントシャペル" target="_blank" class="spot-btn spot-btn-map">📍 地図で見る</a>
                 <a href="https://www.instagram.com/explore/tags/サントシャペル/" target="_blank" class="spot-btn spot-btn-ig">📷 Instagram</a>
             </div>
         </div>
@@ -875,7 +821,7 @@
                     <div class="brand-price">€€€</div>
                 </div>
             </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Le+Marais+Paris" target="_blank" class="transport-link" style="margin-top:10px;">📍 マレ地区をマップで見る</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=マレ地区+パリ" target="_blank" class="transport-link" style="margin-top:10px;">📍 マレ地区をマップで見る</a>
         </div>
 
         <div class="fashion-zone">
@@ -1039,12 +985,12 @@
         </div>
         <div class="phrase-item" style="margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed #f0e8e8;">
             <div class="phrase-jp">テラス席に座っていいですか？</div>
-            <div class="phrase-fr">Puis-je m'asseoir en terrasse?</div>
+            <div class="phrase-fr">Puis-je m'asseoir en terrasse ?</div>
             <div class="phrase-kana">プィジュ マスワール アン テラス？</div>
         </div>
         <div class="phrase-item" style="margin-bottom:0;padding-bottom:0;border:none;">
             <div class="phrase-jp">おすすめのケーキは何ですか？</div>
-            <div class="phrase-fr">Quel gâteau recommandez-vous?</div>
+            <div class="phrase-fr">Quel gâteau recommandez-vous ?</div>
             <div class="phrase-kana">ケル ガトー ルコマンデ ヴ？</div>
         </div>
     </div>
@@ -1054,7 +1000,7 @@
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
             <a href="https://www.tripadvisor.jp/Restaurants-g187147-Paris_Ile_de_France.html" target="_blank" class="qbtn qbtn-rose" style="text-decoration:none; text-align:center;">🍽️ TripAdvisor<br><span style="font-size:0.65rem;">レストラン予約</span></a>
             <a href="https://www.yelp.co.jp/search?find_loc=%E3%83%91%E3%83%AA" target="_blank" class="qbtn qbtn-blue" style="text-decoration:none; text-align:center;">⭐ Yelp Paris<br><span style="font-size:0.65rem;">口コミ検索(日本語)</span></a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Cafe" target="_blank" class="qbtn qbtn-green" style="text-decoration:none; text-align:center;">☕ 近くのカフェ<br><span style="font-size:0.65rem;">Google Map</span></a>
+            <a href="https://www.google.com/maps/search/?api=1&query=近くのカフェ" target="_blank" class="qbtn qbtn-green" style="text-decoration:none; text-align:center;">☕ 近くのカフェ<br><span style="font-size:0.65rem;">Google Map</span></a>
             <a href="https://www.happycow.net/europe/france/paris/?lang=ja" target="_blank" class="qbtn qbtn-gold" style="text-decoration:none; text-align:center;">🥗 ベジ・ビーガン<br><span style="font-size:0.65rem;">HappyCow</span></a>
         </div>
     </div>
@@ -1162,8 +1108,14 @@ function switchTab(id) {
     if (id === 'diary') renderDiary();
 }
 
-// ===== GPS & MAP =====
-let userLat = 48.8566, userLng = 2.3522; // default: Paris centre
+// ===== MAP & ROUTE =====
+// ルート検索用の汎用関数（現在地→入力した目的地）
+function routeTo(inputId) {
+    const dest = document.getElementById(inputId).value.trim();
+    if (!dest) { alert('行き先を入力してください'); return; }
+    // API=1 & destination=... で、現在地から目的地への経路案内が起動します
+    window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(dest)}`, '_blank');
+}
 
 function initMap() {
     const setStatus = (msg) => {
@@ -1176,10 +1128,10 @@ function initMap() {
     setStatus('⏳ 現在地を取得中...');
     navigator.geolocation.getCurrentPosition(
         (pos) => {
-            userLat = pos.coords.latitude;
-            userLng = pos.coords.longitude;
-            // 修正：APIキー不要の正しいGoogle Maps埋め込みURL形式
-            const src = `https://maps.google.com/maps?q=${userLat},${userLng}&z=15&output=embed`;
+            const lat = pos.coords.latitude;
+            const lng = pos.coords.longitude;
+            // APIキー不要のGoogle Maps埋め込みURL形式
+            const src = `https://maps.google.com/maps?q=${lat},${lng}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
             ['map-frame','map-frame2'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.src = src;
@@ -1200,12 +1152,10 @@ function initMap() {
 function goMap() {
     const q = document.getElementById('q').value.trim();
     if (!q) { alert('検索ワードを入力してください'); return; }
-    // 修正：正規のGoogle Maps検索用URL
     window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`, '_blank');
 }
 
 function searchNearby(kw) {
-    // 修正：正規のGoogle Maps検索用URL
     window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(kw)}`, '_blank');
 }
 
@@ -1351,7 +1301,7 @@ function renderDiary() {
                 <span class="diary-entry-meta">${e.mood} ${e.date}</span>
                 <button class="diary-del-btn" onclick="deleteDiaryEntry(${i})">🗑</button>
             </div>
-            <div class="diary-entry-text">${e.text.replace(/</g,'<')}</div>
+            <div class="diary-entry-text">${e.text.replace(/</g,'&lt;')}</div>
         </div>`).join('');
 }
 
@@ -1409,7 +1359,7 @@ function renderExpenses() {
     el.innerHTML = expenses.map((e, i) => `
         <div style="display:flex; align-items:center; justify-content:space-between; padding:7px 0; border-bottom:1px dashed #f0e0e0; font-size:0.82rem;">
             <span style="color:var(--muted); font-size:0.7rem; min-width:36px;">${e.time}</span>
-            <span style="flex:1; margin:0 8px;">${e.note.replace(/</g,'<')}</span>
+            <span style="flex:1; margin:0 8px;">${e.note.replace(/</g,'&lt;')}</span>
             <span style="font-weight:700; color:var(--navy);">€${e.eur.toFixed(2)}</span>
             <button onclick="deleteExpense(${i})" style="background:none;border:none;color:var(--muted);cursor:pointer;margin-left:6px;font-size:0.8rem;">✕</button>
         </div>`).join('');
