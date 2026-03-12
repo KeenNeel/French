@@ -1049,11 +1049,15 @@
         <div style="font-size:0.8rem; color:var(--muted); margin-bottom:12px;">今日のよかったこと、悪かったことを箇条書きで教えてね。AIが分析してひと言メッセージを贈ります♡</div>
         <div style="margin-bottom:12px;">
             <div style="font-size:0.85rem; font-weight:600; color:var(--navy); margin-bottom:6px;">✨ よかったこと（楽しかったこと・嬉しかったこと）</div>
-            <textarea class="diary-textarea" id="ai-good-input" placeholder="例：&#13;&#10;・クロワッサンが美味しかった！&#13;&#10;・エッフェル塔のキラキラが見れた" style="min-height:80px;"></textarea>
+            <textarea class="diary-textarea" id="ai-good-input" placeholder="例：
+・クロワッサンが美味しかった！
+・エッフェル塔のキラキラが見れた" style="min-height:80px;"></textarea>
         </div>
         <div style="margin-bottom:12px;">
             <div style="font-size:0.85rem; font-weight:600; color:var(--deep-rose); margin-bottom:6px;">💦 悪かったこと（残念だったこと・腹が立ったこと）</div>
-            <textarea class="diary-textarea" id="ai-bad-input" placeholder="例：&#13;&#10;・道に迷って歩き疲れた&#13;&#10;・スリに遭いそうになって怖かった" style="min-height:80px;"></textarea>
+            <textarea class="diary-textarea" id="ai-bad-input" placeholder="例：
+・道に迷って歩き疲れた
+・スリに遭いそうになって怖かった" style="min-height:80px;"></textarea>
         </div>
         <button class="diary-save-btn" id="ai-submit-btn" onclick="submitToAI()" style="background: linear-gradient(135deg, #1a2744, #2d3f6e);">✨ 入力完了（AIに送信）</button>
         
@@ -1179,8 +1183,8 @@ function initMap() {
         (pos) => {
             const lat = pos.coords.latitude;
             const lng = pos.coords.longitude;
-            // APIキー不要のGoogle Maps埋め込みURL形式
-            const src = `https://maps.google.com/maps?q=$${lat},${lng}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+            // なぜこの処理が必要か：地図を表示する枠（iframe）に対して、正しいGoogleマップの住所（URL）と、取得した緯度・経度を正しく渡してあげるためです。
+            const src = `https://maps.google.com/maps?q=${lat},${lng}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
             ['map-frame','map-frame2'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.src = src;
@@ -1350,7 +1354,7 @@ function renderDiary() {
                 <span class="diary-entry-meta">${e.mood} ${e.date}</span>
                 <button class="diary-del-btn" onclick="deleteDiaryEntry(${i})">🗑</button>
             </div>
-            <div class="diary-entry-text">${e.text.replace(/</g,'&lt;')}</div>
+            <div class="diary-entry-text">${e.text.replace(/</g,'<')}</div>
         </div>`).join('');
 }
 
@@ -1408,7 +1412,7 @@ function renderExpenses() {
     el.innerHTML = expenses.map((e, i) => `
         <div style="display:flex; align-items:center; justify-content:space-between; padding:7px 0; border-bottom:1px dashed #f0e0e0; font-size:0.82rem;">
             <span style="color:var(--muted); font-size:0.7rem; min-width:36px;">${e.time}</span>
-            <span style="flex:1; margin:0 8px;">${e.note.replace(/</g,'&lt;')}</span>
+            <span style="flex:1; margin:0 8px;">${e.note.replace(/</g,'<')}</span>
             <span style="font-weight:700; color:var(--navy);">€${e.eur.toFixed(2)}</span>
             <button onclick="deleteExpense(${i})" style="background:none;border:none;color:var(--muted);cursor:pointer;margin-left:6px;font-size:0.8rem;">✕</button>
         </div>`).join('');
@@ -1443,10 +1447,34 @@ async function submitToAI() {
     btn.disabled = true;
     resArea.style.display = 'none';
 
+    // なぜこの処理が必要か：AIに「いつ」の出来事か伝えるためです。
+    const now = new Date();
+    const parisDate = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Paris' }));
+    const dateString = `${parisDate.getFullYear()}年${parisDate.getMonth()+1}月${parisDate.getDate()}日`;
+
+    // なぜこの処理が必要か：現在地のGPS情報を取得してAIに渡し、場所に応じた反応をもらうためです。
+    let locationString = "位置情報なし";
+    if (navigator.geolocation) {
+        try {
+            // Promiseを使って、GPSの情報が返ってくるまで処理を一時停止して待ちます
+            const pos = await new Promise((resolve, reject) => {
+                navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 5000 });
+            });
+            const lat = pos.coords.latitude;
+            const lng = pos.coords.longitude;
+            locationString = `緯度 ${lat}, 経度 ${lng}`;
+        } catch (error) {
+            console.log("位置情報が取得できませんでした", error);
+            locationString = "現在地を取得できませんでした（屋内やGPSオフの可能性があります）";
+        }
+    }
+
     // 👇 【重要】ここにGASでデプロイしたWebアプリのURLを貼り付けてください
     const gasUrl = 'https://script.google.com/macros/s/AKfycbxT2T8HcLaGMSnaKzwR0AbtXu1QD6tZ5e638EHaQwI5zW4nrgTsYTW_QaJFhyoyvg/exec'; 
 
     const prompt = `あなたは旅行中のユーザーを優しくサポートするアシスタントAIです。以下のユーザーの今日の「よかったこと」と「悪かったこと」の箇条書きを分析し、共感と励ましのひと言（2〜3文程度）を返してください。トーンは親しみやすく、絵文字を少し交えてください。
+【今日の日付】${dateString}
+【現在地】${locationString}
 【よかったこと】
 ${good}
 【悪かったこと】
