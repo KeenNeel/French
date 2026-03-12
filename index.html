@@ -1045,6 +1045,24 @@
     </div>
 
     <div class="card">
+        <div class="card-title">🤖 AIと1日の振り返り</div>
+        <div style="font-size:0.8rem; color:var(--muted); margin-bottom:12px;">今日のよかったこと、悪かったことを箇条書きで教えてね。AIが分析してひと言メッセージを贈ります♡</div>
+        <div style="margin-bottom:12px;">
+            <div style="font-size:0.85rem; font-weight:600; color:var(--navy); margin-bottom:6px;">✨ よかったこと（楽しかったこと・嬉しかったこと）</div>
+            <textarea class="diary-textarea" id="ai-good-input" placeholder="例：&#13;&#10;・クロワッサンが美味しかった！&#13;&#10;・エッフェル塔のキラキラが見れた" style="min-height:80px;"></textarea>
+        </div>
+        <div style="margin-bottom:12px;">
+            <div style="font-size:0.85rem; font-weight:600; color:var(--deep-rose); margin-bottom:6px;">💦 悪かったこと（残念だったこと・腹が立ったこと）</div>
+            <textarea class="diary-textarea" id="ai-bad-input" placeholder="例：&#13;&#10;・道に迷って歩き疲れた&#13;&#10;・スリに遭いそうになって怖かった" style="min-height:80px;"></textarea>
+        </div>
+        <button class="diary-save-btn" id="ai-submit-btn" onclick="submitToAI()" style="background: linear-gradient(135deg, #1a2744, #2d3f6e);">✨ 入力完了（AIに送信）</button>
+        
+        <div id="ai-response-area" style="display:none; margin-top:16px; padding:14px; background:var(--blush); border-radius:12px; border-left:4px solid var(--navy); animation: fadeUp 0.3s ease;">
+            <div style="font-size:0.85rem; font-weight:700; color:var(--navy); margin-bottom:6px;">🤖 AIからのメッセージ</div>
+            <div id="ai-response-text" style="font-size:0.82rem; line-height:1.7; color:var(--text);"></div>
+        </div>
+    </div>
+    <div class="card">
         <div class="card-title">✍️ 今日の日記</div>
         <div class="diary-date-label" id="diary-today-label"></div>
         <div class="diary-toolbar">
@@ -1145,7 +1163,7 @@ function routeTo(inputId) {
     const dest = document.getElementById(inputId).value.trim();
     if (!dest) { alert('行き先を入力してください'); return; }
     // API=1 & destination=... で、現在地から目的地への経路案内が起動します
-    window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(dest)}`, '_blank');
+    window.open(`https://www.google.com/maps/dir/?api=1&destination=$${encodeURIComponent(dest)}`, '_blank');
 }
 
 function initMap() {
@@ -1162,7 +1180,7 @@ function initMap() {
             const lat = pos.coords.latitude;
             const lng = pos.coords.longitude;
             // APIキー不要のGoogle Maps埋め込みURL形式
-            const src = `https://maps.google.com/maps?q=${lat},${lng}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+            const src = `https://maps.google.com/maps?q=$${lat},${lng}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
             ['map-frame','map-frame2'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.src = src;
@@ -1183,11 +1201,11 @@ function initMap() {
 function goMap() {
     const q = document.getElementById('q').value.trim();
     if (!q) { alert('検索ワードを入力してください'); return; }
-    window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`, '_blank');
+    window.open(`https://www.google.com/maps/search/?api=1&query=$${encodeURIComponent(q)}`, '_blank');
 }
 
 function searchNearby(kw) {
-    window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(kw)}`, '_blank');
+    window.open(`https://www.google.com/maps/search/?api=1&query=$${encodeURIComponent(kw)}`, '_blank');
 }
 
 // ===== WEATHER (Open-Meteo, no API key) =====
@@ -1332,7 +1350,7 @@ function renderDiary() {
                 <span class="diary-entry-meta">${e.mood} ${e.date}</span>
                 <button class="diary-del-btn" onclick="deleteDiaryEntry(${i})">🗑</button>
             </div>
-            <div class="diary-entry-text">${e.text.replace(/</g,'<')}</div>
+            <div class="diary-entry-text">${e.text.replace(/</g,'&lt;')}</div>
         </div>`).join('');
 }
 
@@ -1390,7 +1408,7 @@ function renderExpenses() {
     el.innerHTML = expenses.map((e, i) => `
         <div style="display:flex; align-items:center; justify-content:space-between; padding:7px 0; border-bottom:1px dashed #f0e0e0; font-size:0.82rem;">
             <span style="color:var(--muted); font-size:0.7rem; min-width:36px;">${e.time}</span>
-            <span style="flex:1; margin:0 8px;">${e.note.replace(/</g,'<')}</span>
+            <span style="flex:1; margin:0 8px;">${e.note.replace(/</g,'&lt;')}</span>
             <span style="font-weight:700; color:var(--navy);">€${e.eur.toFixed(2)}</span>
             <button onclick="deleteExpense(${i})" style="background:none;border:none;color:var(--muted);cursor:pointer;margin-left:6px;font-size:0.8rem;">✕</button>
         </div>`).join('');
@@ -1407,6 +1425,51 @@ function closeModal(e) {
         document.getElementById('modal').classList.remove('open');
     }
 }
+
+// ===== ここから追加機能：AIとの振り返り処理 =====
+async function submitToAI() {
+    const good = document.getElementById('ai-good-input').value.trim();
+    const bad = document.getElementById('ai-bad-input').value.trim();
+    const btn = document.getElementById('ai-submit-btn');
+    const resArea = document.getElementById('ai-response-area');
+    const resText = document.getElementById('ai-response-text');
+
+    if (!good && !bad) {
+        alert('よかったこと、または悪かったことを入力してね！');
+        return;
+    }
+
+    btn.textContent = '⏳ AIが考え中...';
+    btn.disabled = true;
+    resArea.style.display = 'none';
+
+    // 👇 【重要】ここにGASでデプロイしたWebアプリのURLを貼り付けてください
+    const gasUrl = 'https://script.google.com/macros/s/AKfycbxT2T8HcLaGMSnaKzwR0AbtXu1QD6tZ5e638EHaQwI5zW4nrgTsYTW_QaJFhyoyvg/exec'; 
+
+    const prompt = `あなたは旅行中のユーザーを優しくサポートするアシスタントAIです。以下のユーザーの今日の「よかったこと」と「悪かったこと」の箇条書きを分析し、共感と励ましのひと言（2〜3文程度）を返してください。トーンは親しみやすく、絵文字を少し交えてください。
+【よかったこと】
+${good}
+【悪かったこと】
+${bad}`;
+
+    try {
+        const response = await fetch(gasUrl, {
+            method: 'POST',
+            body: JSON.stringify({ prompt: prompt })
+        });
+        
+        const data = await response.json();
+        resText.innerHTML = data.message.replace(/\n/g, '<br>');
+        resArea.style.display = 'block';
+    } catch (error) {
+        resText.innerHTML = 'ごめんなさい、AIと通信できませんでした😢<br>GASのURLが正しく設定されているか確認してね。';
+        resArea.style.display = 'block';
+    } finally {
+        btn.textContent = '✨ 入力完了（AIに送信）';
+        btn.disabled = false;
+    }
+}
+// ===== ここまで追加機能 =====
 </script>
 </body>
 </html>
